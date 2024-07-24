@@ -36,7 +36,7 @@
  document.getElementById('nav').style.backgroundColor = navbar.BackgroundColor;
  document.getElementById('nav').style.position = navbar.StickNavbar;
  document.getElementById('logo').src = navbar.UrlLogo;
- document.getElementById('tekslogo').innerText = navbar.TeksLogo;
+ document.getElementById('tekslogo').innerText = navbar.TksLogo;
  
  // header
  const header = data.Header[0];
