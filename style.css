@@ -260,6 +260,7 @@ section {
 }
 
 #profil {
+  margin-top: 0;
     background-color: #F0F4C3; /* Hijau terang */
     min-height: 60%;
 }
