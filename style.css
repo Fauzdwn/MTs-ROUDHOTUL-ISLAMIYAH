@@ -20,7 +20,7 @@ body {
         height: 100%;
         background-color: #F0F4C3;
         z-index: 1000;
-        display: column;
+        display: flex;
         align-items: center;
         justify-content: center;
       }
