@@ -10,6 +10,10 @@ body {
     background-color: #F0F4C3;
     font-family: "Segoe UI", sans-serif;
 }
+main{
+    padding: 0;
+    margin: o;
+}
 /* style untuk animasi Loading         layar yang tampil saat Loading*/
 .loading-overlay {
     position: fixed;
