@@ -21,6 +21,7 @@ body {
         background-color: #F0F4C3;
         z-index: 1000;
         display: flex;
+        flex-direction: column;
         align-items: center;
         justify-content: center;
       }
