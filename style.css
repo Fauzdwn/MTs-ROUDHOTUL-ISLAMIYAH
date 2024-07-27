@@ -465,8 +465,9 @@ section {
 
 /* Gaya untuk Alumni */
 .container-alumni {
+    margin: 0;
     text-align: center;
-    padding: 0;
+    padding: 50px 0;
     background: url('assets/header1.jpg') no-repeat center center;
     background-size: cover;
 }
