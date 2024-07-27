@@ -1,12 +1,4 @@
-  //wajib untuk buat animasi loading 
-        document.addEventListener('DOMContentLoaded', function() {
-        const loadingOverlay = document.getElementById('loading-overlay');
-        // Tampilkan overlay putih dan spinner
-        loadingOverlay.style.display = 'flex';
-  
-  
-  
-        // URL API JSON yang telah Anda buat
+      // URL API JSON yang telah Anda buat
      const apiUrl = 'https://script.googleusercontent.com/macros/echo?user_content_key=ToKBhhttFn92maVI7erGHEy4y6vzI_vLOYZdaT-a3TsAkLlpkOJniDUKIUadKwlGcm_m9EeGqs-vNA-NVQtr7Madz-LE_A_Mm5_BxDlH2jW0nuo2oDemN9CCS2h10ox_1xSncGQajx_ryfhECjZEnCZOpiEnfz5TZfrp2nGU4BEw6uIsROeHHFKro8HWVrV8v9glmAgVfj2DRgTCzrCwLnRa7R_KgPAEt_kCaNoZnK_6LcvpFaYXDQ&lib=MnA_RtjAvg-lWr-OWFsKKlC3xNIJWkbbe';
        
      fetch(apiUrl)
@@ -72,18 +64,6 @@
  document.getElementById('namaAlumni3').innerText = bodyhome.NamaAlumni3;
  document.getElementById('fotoAlumni3').src = bodyhome.FotoAlumni3;
  document.getElementById('kataAlumni3').innerText = bodyhome.KataAlumni3;
-  
-  
-            // Sembunyikan overlay setelah data berhasil dimuat
-            loadingOverlay.style.display = 'none';
-          })
-          .catch(error => {
-            console.error('Error fetching data:', error);
-            // Sembunyikan overlay meskipun terjadi error
-            loadingOverlay.style.display = 'none';
-          });
-      });
-
 
 const menuIcon = document.getElementById('menu-icon');
 const menuList = document.getElementById('menu-list');
