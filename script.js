@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
     const loadingOverlay = document.getElementById('loading-overlay');
     // Tampilkan overlay putih dan spinner
-    loadingOverlay.style.display = 'flex';
+    loadingOverlay.style.display = 'none';
 
   // URL API JSON yang telah Anda buat
   const apiUrl = 'https://script.googleusercontent.com/macros/echo?user_content_key=ToKBhhttFn92maVI7erGHEy4y6vzI_vLOYZdaT-a3TsAkLlpkOJniDUKIUadKwlGcm_m9EeGqs-vNA-NVQtr7Madz-LE_A_Mm5_BxDlH2jW0nuo2oDemN9CCS2h10ox_1xSncGQajx_ryfhECjZEnCZOpiEnfz5TZfrp2nGU4BEw6uIsROeHHFKro8HWVrV8v9glmAgVfj2DRgTCzrCwLnRa7R_KgPAEt_kCaNoZnK_6LcvpFaYXDQ&lib=MnA_RtjAvg-lWr-OWFsKKlC3xNIJWkbbe';
@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function() {
       const sitePengaturan = data.SitePengaturan[0];
     
       // pengaturan display
-      document.getElementById('nav').style.display = sitePengaturan.DisplayNavbar;
+    //  document.getElementById('nav').style.display = sitePengaturan.DisplayNavbar;
       document.getElementById('header').style.display= sitePengaturan.DisplayHeader;
       document.getElementById('body').style.display= sitePengaturan.DisplayBody;
       document.getElementById('footer').style.display= sitePengaturan.DisplayFooter;
@@ -26,14 +26,6 @@ document.body.style.backgroundColor = pengaturanBawaan.WarnaBackground;
 
 document.body.style.fontFamily = pengaturanBawaan.NamaFont;
 
-
-// navbar
-const navbar = data.Navbar[0];
-
-document.getElementById('nav').style.backgroundColor = navbar.BackgroundColor;
-document.getElementById('nav').style.position = navbar.StickNavbar;
-document.getElementById('logo').src = navbar.UrlLogo;
-document.getElementById('tekslogo').innerText = navbar.TeksLogo;
 
 // header
 const header = data.Header[0];
@@ -79,37 +71,7 @@ document.getElementById('kataAlumni3').innerText = bodyhome.KataAlumni3;
         loadingOverlay.style.display = 'none';
       });
   });
-    
-
-const menuIcon = document.getElementById('menu-icon');
-const menuList = document.getElementById('menu-list');
-
-menuIcon.addEventListener('click', () => {
-    if (menuList.classList.contains('hidden')) {
-        menuList.style.height = menuList.scrollHeight + 'px';
-    } else {
-        menuList.style.height = 0;
-    }
-    menuList.classList.toggle('hidden');
-});
-
-const navLinks = document.querySelectorAll('nav ul li a');
-
-navLinks.forEach(link => {
-    link.addEventListener('click', () => {
-        // Hapus kelas 'active' dari semua link
-        navLinks.forEach(navLink => navLink.classList.remove('active'));
-        
-        // Tambahkan kelas 'active' ke link yang diklik
-        link.classList.add('active');
-
-        if (window.innerWidth < 768) { // Hanya collapse menu pada tampilan mobile
-            menuList.style.height = 0;
-            menuList.classList.add('hidden');
-        }
-    });
-});
-
+  
 // Element untuk animasi header
 const headerText = document.querySelector('.header-content');
 const headerImage = document.querySelector('.header-image');
@@ -117,7 +79,7 @@ const headerImage = document.querySelector('.header-image');
 // Tambahkan kelas untuk animasi navbar dan header saat halaman dimuat
 window.addEventListener('load', () => {
     // Tambahkan kelas ke nav untuk memicu animasi slide down
-    document.querySelector('nav').classList.add('visible');
+   // document.querySelector('nav').classList.add('visible');
 
     // Tambahkan kelas ke teks dan gambar header untuk memicu animasi mereka
     headerText.classList.add('animate');

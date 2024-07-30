@@ -21,6 +21,7 @@ main{
     top: 0;
     width: 100%;
     height: 100%;
+    display: none !important;
     background-color: #F0F4C3;
     z-index: 1000;
     display: flex;
@@ -41,7 +42,7 @@ main{
     100% { transform: rotate(360deg); }
   }
 nav {
-    position: none;
+    /*position: none;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -49,61 +50,30 @@ nav {
     width: 100%;
     top: 0;
     z-index: 1000;
-    opacity: 0; /* Awal animasi */
-    transform: translateY(-100%); /* Awal animasi */
-    transition: opacity 1.5s ease, transform 1.5s ease; /* Transisi animasi */
-    background-color: #8BC34A; /* Hijau terang */
-    color: #FFEB3B; /* Kuning */
+    opacity: 0; 
+    */
+    /*
+    transform: translateY(-100%);
+    transition: opacity 1.5s ease, transform 1.5s ease; 
+    background-color: #8BC34A; 
+    color: #FFEB3B; 
+    */
 }
-
-nav.visible {
-    opacity: 1;
-    transform: translateY(0);
+.navbar {
+  width: 100%;
+  position: fixed !important;
+  z-index: 9999;
+  top: 0;
+  left: 0;
 }
-
-nav ul {
-    display: flex;
-    align-items: center;
-    gap: 2rem;
-    list-style: none;
-    transition: height 0.3s ease;
-    overflow: hidden;
+.navbar-toggler {
+  z-index: 999999;
+  background: #F0F4C3 !important;
+  border: 0 !important;
 }
-
-nav .logo img {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-}
-
-nav .logo {
-    display: flex;
-    align-items: center;
-}
-
-.logo span {
-    margin-left: 8px;
-    font-family: Sans-Serif;
-    font-weight: 500;
-    font-size: 20px;
-    color: #FFEB3B; /* Kuning */
-}
-
-nav ul li a {
-    text-decoration: none;
-    color: #FFEB3B; /* Kuning */
-    font-weight: 600;
-    padding: 8px 0;
-    transition: color 300ms, border-bottom 300ms;
-    border-bottom: 1px solid rgba(255, 68, 0, 0);
-}
-
-nav ul li a:hover,
-nav ul li a.active {
-    color: #8BC34A; /* Hijau terang */
-    border-bottom: 1px solid #8BC34A; /* Hijau terang */
-    background-color: #FFEB3B;
-    border-radius: 5px;
+.navbar-toggler span {
+  font-size: 1.5em;
+  color: #3498db !important;
 }
 
 .menu-icon {
@@ -120,24 +90,7 @@ main {
   .logo span{
     display: none;
   }
-    nav {
-        flex-wrap: wrap;
-        height: auto; /* Kembalikan tinggi ke auto untuk mobile */
-        border-bottom-left-radius: 10px;
-        border-bottom-right-radius: 10px;
-    }
-
-    nav ul {
-        flex-direction: column;
-        width: 100%;
-        height: 0;
-        background-color: rgba(225, 225, 225, 0.5);
-        border-radius: 15px;
-    }
-
-    nav ul.hidden {
-        height: 0;
-    }
+    
 
     .menu-icon {
         display: flex;
