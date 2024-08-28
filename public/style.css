@@ -49,6 +49,7 @@ main{
 
 .navbar {
   width: 100%;
+  overflow-x: hidden;
   position: fixed !important;
   z-index: 9999;
   top: 0;
@@ -149,6 +150,7 @@ main{
 
 #header {
     position: relative;
+    overflow-x: hidden;
     min-height: 100vh; /* Full layar */
     display: flex;
     background: #000;
@@ -229,6 +231,7 @@ main{
 
 section {
     padding: 0;
+    margin: 0;
 }
 
 #profil {
@@ -628,6 +631,7 @@ section {
     position: absolute;
     bottom: 0;
     width: 100%;
+    overflow-x: hidden;
 }
 
 .footer-bottom p {
