@@ -46,24 +46,7 @@ main{
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
   }
-nav {
-    /*position: none;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0.5rem 1rem;
-    width: 100%;
-    top: 0;
-    z-index: 1000;
-    opacity: 0; 
-    */
-    /*
-    transform: translateY(-100%);
-    transition: opacity 1.5s ease, transform 1.5s ease; 
-    background-color: #8BC34A; 
-    color: #FFEB3B; 
-    */
-}
+
 .navbar {
   width: 100%;
   position: fixed !important;
