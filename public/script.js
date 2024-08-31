@@ -13,3 +13,19 @@ document.addEventListener('DOMContentLoaded', () => {
     })
     .catch(error => console.error('Error fetching data:', error));
 });
+
+var isLogin = localStorage.getItem("user")
+if (isLogin) {
+  document.querySelector(".login-false").style.display = "none"
+  document.querySelector(".login-true").style.display = "flex"
+} else {
+  document.querySelector(".login-false").style.display = "flex"
+  document.querySelector(".login-true").style.display = "none"
+}
+
+function logout() {
+  localStorage.removeItem("user")
+  localStorage.removeItem("pw")
+  alert('success logout')
+ location.reload()
+}
