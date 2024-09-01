@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
     var db = "https://mtsri-db-default-rtdb.firebaseio.com/";
+    // fetch cms
     fetch(db + "cms.json")
         .then(response => response.json())
         .then(data => {
@@ -25,11 +26,33 @@ document.addEventListener("DOMContentLoaded", () => {
                     val.jmlGuru;
                 document.getElementById("desk-footer").textContent =
                     val.deskFooter;
-                document.getElementById("logo").src = val.logo;
+               /* document.getElementById("logo").src = val.logo;
                 document.querySelector("header-background").bacground = val.headerBackground;
                 document.getElementById("logo-profil").src = val.imglogoProfil;
                 document.getElementById("imgProfil").src = val.imgProfil;
-                document.getElementById("img-footer").src = val.imgFooter;
+                document.getElementById("img-footer").src = val.imgFooter;*/
+            }
+        })
+        .catch(error => console.error("Error fetching data:", error));
+    // fetch berita
+    fetch(db + "berita.json")
+        .then(response => response.json())
+        .then(data => {
+            for (let key in data) {
+                var val = data[key];
+                var newElement = document.createElement("div")
+                newElement.classList.add("news-card")
+                newElement.addEventListener("click", () => {
+                  window.location.href = "/berita/" + val.idBerita
+                })
+                newElement.innerHTML = `
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ42PoYN5pyRg18F0D-Rngi6UR8b-iacWNFCu5clK5EL55OM4LdQaDW970&s=10" class="w-100 mb-2 rounded-1" alt="">
+                <h3>${val.titleBerita}</h3>
+                <p>
+                    Baca Detail
+                </p>
+                `
+                document.getElementById("body-berita").appendChild(newElement)
             }
         })
         .catch(error => console.error("Error fetching data:", error));

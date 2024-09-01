@@ -59,7 +59,6 @@ fetch(db + "cms.json")
             
         }
     });
-
 // fetch akun
 fetch(db + "account.json")
     .then(response => response.json())
@@ -70,3 +69,29 @@ fetch(db + "account.json")
         }
         document.getElementById("fill-acc").innerText = length;
     });
+
+function addBerita() {
+    fetch(db + "berita.json", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            idBerita: Math.floor(Math.random() * 1000),
+            titleBerita: document.getElementById("title-berita").value,
+            createdBy: document.getElementById("pembuat-berita").value,
+            createdAt: new Date(),
+            status: document.getElementById("status-berita").value,
+            banner: document.getElementById("banner-berita").value,
+            content: document.getElementById("fill-berita").value
+        })
+    })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(response.statusText);
+            }
+            alert("berhasil menambahkan berita");
+            location.reload();
+        })
+        .catch(error => console.error(error));
+}

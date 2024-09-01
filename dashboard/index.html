@@ -39,7 +39,8 @@
         </div>
       </nav>
 
-      <main class="container mt-5">
+      <main class="mt-5">
+        <div class="container">
         <h2 class="m-0">Welcome admin !</h2>
         <div class="d-flex gap-3">
             <p class="m-0">Total account :</p>
@@ -57,60 +58,94 @@
             <p class="m-0">Total berita :</p>
             <p class="m-0" id="fill-berita">0</p>
         </div>
-
-        <div class="mt-3 d-flex pb-3 flex-column">
-            <h3 class="">CMS Content Management System (Teks)</h3>
+        </div>
+        <hr class="my-3">
+        <div class="accordion accordion-flush" style="" id="">
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+              CMS Content Management System (Teks)
+            </button>
+          </h2>
+          <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+            <div class="accordion-body">
             <h5>Title heading</h5>
             <input type="text" name="" class="form-control" id="title-hd">
-            <button class="btn btn-primary mt-2" onclick="save()">Save</button>
             <h5 class="mt-3">Slogan in heading</h5>
             <input type="text" name="" class="form-control" id="slogan-hd">
-            <button class="btn btn-primary mt-2" onclick="save()">Save</button>
             <h5 class="mt-3">Deskripsi in heading</h5>
             <input type="text" name="" class="form-control" id="desk-hd">
-            <button class="btn btn-primary mt-2" onclick="save()">Save</button>
             <h5 class="mt-3">Button CTA in heading</h5>
             <input type="text" name="" class="form-control" id="cta-hd">
-            <button class="btn btn-primary mt-2" onclick="save()">Save</button>
             <h5 class="mt-3">Deskripsi tentang MTS Roudhotul Islamiyah</h5>
             <input type="text" name="" class="form-control" id="tentang">
-            <button class="btn btn-primary mt-2" onclick="save()">Save</button>
             <h5 class="mt-3">Visi</h5>
             <input type="text" name="" class="form-control" id="visi">
-            <button class="btn btn-primary mt-2" onclick="save()">Save</button>
             <h5 class="mt-3">Misi</h5>
             <input type="text" name="" class="form-control" id="misi">
-            <button class="btn btn-primary mt-2" onclick="save()">Save</button>
             <h5 class="mt-3">Jumlah santri laki-laki</h5>
             <input type="number" name="" class="form-control" id="jumlah-santri-lk">
-            <button class="btn btn-primary mt-2" onclick="save()">Save</button>
             <h5 class="mt-3">Jumlah santri perempuan</h5>
             <input type="number" name="" class="form-control" id="jumlah-santri-pr">
-            <button class="btn btn-primary mt-2" onclick="save()">Save</button>
             <h5 class="mt-3">Jumlah guru/pegawai yang bekerja di MTS Roudhotul Islamiyah</h5>
             <input type="number" name="" class="form-control" id="jumlah-guru">
-            <button class="btn btn-primary mt-2" onclick="save()">Save</button>
             <h5 class="mt-3">Deskripsi footer</h5>
             <input type="text" name="" class="form-control" id="desk-footer">
-            <button class="btn btn-primary mt-2" onclick="save()">Save</button><br />
-            <h3 class="">CMS Content Management System (image)</h3>
+            <button class="btn btn-primary mt-2" onclick="save()">Save</button>
+        
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+              CMS Content Management System (Gambar)
+            </button>
+          </h2>
+          <div id="flush-collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+            <div class="accordion-body">      
             <h5 class="mt-3">Logo</h5>
             <input type="text" name="" class="form-control" id="logo">
-            <button class="btn btn-primary mt-2" onclick="save()">Save</button>
             <h5 class="mt-3">Header background</h5>
             <input type="text" name="" class="form-control" id="header-background">
-            <button class="btn btn-primary mt-2" onclick="save()">Save</button>
             <h5 class="mt-3">Image Logo Profil</h5>
             <input type="text" name="" class="form-control" id="logo-profil">
-            <button class="btn btn-primary mt-2" onclick="save()">Save</button>
             <h5 class="mt-3">Image Profil</h5>
             <input type="text" name="" class="form-control" id="img-profil">
-            <button class="btn btn-primary mt-2" onclick="save()">Save</button>
             <h5 class="mt-3">Image Footer</h5>
             <input type="text" name="" class="form-control" id="img-footer">
-            <button class="btn btn-primary mt-2" onclick="save()">Save</button>
-            
+            <button class="btn btn-success mt-2" onclick="save()">Save</button>
+            </div>
+          </div>
         </div>
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+              Monitoring berita di halaman
+            </button>
+          </h2>
+          <div id="flush-collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+            <div class="accordion-body">      
+            <h5 class="mt-3">Title berita</h5>
+            <input type="text" name="" class="form-control" id="title-berita">
+            <h5 class="mt-3">Dibuat oleh</h5>
+            <input type="text" name="" class="form-control" id="pembuat-berita">
+            <h5 class="mt-3">Status berita</h5>
+            <select name="" class="form-control" id="status-berita" value="aktif">
+              <option value="aktif">Aktif</option>
+              <option value="draft">Draft</option>
+              <option value="closed">Tidak terpakai</option>
+            </select>
+            <h5 class="mt-3">Banner berita</h5>
+            <input type="text" name="" class="form-control" id="banner-berita">
+            <h5 class="mt-3">Isi berita</h5>
+            <input type="text" name="" class="form-control" id="fill-berita">
+            <button class="btn btn-warning mt-2" onclick="addBerita()">Tambahkan berita</button>
+            <p class="my-2">Nanti disini bisa show all beritanya jg dalam bentuk table</p>
+            </div>
+          </div>
+        </div>
+      </div>
       </main>
     
     <script src="dashboard.js" type="text/javascript" charset="utf-8"></script>
