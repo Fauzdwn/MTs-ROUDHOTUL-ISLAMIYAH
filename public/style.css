@@ -7,13 +7,13 @@ html {
 }
 
 body {
-    background: #F0F4C3 !important;
+    background: #f0f4c3 !important;
     font-family: "Segoe UI", sans-serif;
     margin: 0 !important;
     padding: 0 !important;
     overflow-x: hidden;
 }
-main{
+main {
     padding: 0 !important;
     margin: 0 !important;
     width: 100%;
@@ -27,25 +27,29 @@ main{
     width: 100%;
     height: 100%;
     display: none !important;
-    background-color: #F0F4C3;
+    background-color: #f0f4c3;
     z-index: 1000;
     display: flex;
     align-items: center;
     justify-content: center;
-  }
-  /* Loading spinner */
-  .spinner {
-    border: 2px solid #F0F4C3;
+}
+/* Loading spinner */
+.spinner {
+    border: 2px solid #f0f4c3;
     border-top: 3px solid #3498db;
     border-radius: 50%;
     width: 50px;
     height: 50px;
     animation: spin 1s linear infinite;
-  }
-  @keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-  }
+}
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
 nav {
     /*position: none;
     display: flex;
@@ -65,11 +69,11 @@ nav {
     */
 }
 .navbar {
-  width: 100%;
-  position: fixed !important;
-  z-index: 9999;
-  top: 0;
-  left: 0;
+    width: 100%;
+    position: fixed !important;
+    z-index: 9999;
+    top: 0;
+    left: 0;
 }
 .nav-link {
     padding-left: 10px !important;
@@ -77,12 +81,12 @@ nav {
 }
 .active {
     border-radius: 5px !important;
-    background: #F0F4C3 !important;
+    background: #f0f4c3 !important;
 }
 .navbar-toggler {
-  z-index: 999999;
-  background: #F0F4C3 !important;
-  border: 0 !important;
+    z-index: 999999;
+    background: #f0f4c3 !important;
+    border: 0 !important;
 }
 .navbar-toggler:hover,
 .navbar-toggler:active,
@@ -93,8 +97,8 @@ nav {
     padding-top: 10px;
 }
 .navbar-toggler span {
-  font-size: 1.5em;
-  color: #3498db !important;
+    font-size: 1.5em;
+    color: #3498db !important;
 }
 
 .menu-icon {
@@ -103,24 +107,30 @@ nav {
     cursor: pointer;
 }
 
+@media only screen and (max-width: 500px) {
+    #judulHeader {
+        font-size: 2.5em !important;
+    }
+    #deskHeader {
+        font-size: 1em !important;
+    }
+}
 
 @media only screen and (max-width: 768px) {
-  .logo span{
-    display: none;
-  }
-    
-
+    .logo span {
+        display: none;
+    }
     .menu-icon {
         display: flex;
         align-items: center;
     }
 }
 @media only screen and (min-width: 768px) {
-  .navbar-collapse {
-    position: absolute;
-    right: 25px;
-    top: 0;
-  }
+    .navbar-collapse {
+        position: absolute;
+        right: 25px;
+        top: 10px;
+    }
 }
 
 /* Animasi Slide In */
@@ -176,16 +186,16 @@ nav {
 }
 
 .header-background {
-  margin: 0;
+    margin: 0;
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: url('images/header1.jpg') center/cover no-repeat fixed;
+    background: url("images/header1.jpg") center/cover no-repeat fixed;
     filter: blur(1px); /* Blur hanya pada background */
     z-index: 0;
-    opacity: .4;
+    opacity: 0.4;
 }
 
 .header-content,
@@ -211,8 +221,8 @@ nav {
     border-radius: 10px;
 }
 
-.header-image{
-  margin-right: 70px;
+.header-image {
+    margin-right: 70px;
 }
 
 @media only screen and (max-width: 768px) {
@@ -222,7 +232,7 @@ nav {
         padding-top: 70px; /* Menyesuaikan tinggi navbar */
         padding-bottom: 180px;
     }
-    
+
     .header-content {
         max-width: 100%;
         margin-bottom: 0.5rem; /* Kurangi jarak margin bawah */
@@ -238,7 +248,7 @@ nav {
     .header-content h1 {
         margin-bottom: 0.5rem; /* Kurangi jarak margin bawah */
     }
-    
+
     .header-content p {
         margin-bottom: 0.5rem; /* Kurangi jarak margin bawah */
     }
@@ -249,34 +259,34 @@ section {
 }
 
 #profil {
-  margin-top: 0;
-    background-color: #F0F4C3; /* Hijau terang */
+    margin-top: 0;
+    background-color: #f0f4c3; /* Hijau terang */
     min-height: 60%;
 }
 
-.profil-teks h2{
+.profil-teks h2 {
     font-weight: bold;
     font-size: 30px;
     text-align: center;
     margin-bottom: 1rem;
 }
 
-.profil-teks p{
+.profil-teks p {
     text-align: justify;
 }
 
-.container-profil{
-  display: flex;
+.container-profil {
+    display: flex;
 }
 
-.profil-teks{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 30px;
+.profil-teks {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 30px;
 }
 
-.container-profil img{
+.container-profil img {
     width: 100%;
     max-width: 500px;
     height: auto;
@@ -284,106 +294,105 @@ section {
     margin: 30px;
 }
 
-.profil-teks button{
+.profil-teks button {
 }
 
-.icon{
-  height: 150px;
-  width: 150px;
+.icon {
+    height: 150px;
+    width: 150px;
 }
 
-.container-icon{
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  background-color: #fff;
-  margin: 0;
-  height: 400px;
+.container-icon {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: #fff;
+    margin: 0;
+    height: 400px;
 }
 
-.container-icon h2{
-  margin: 30px;
-  font-weight: bold;
-  font-size: 30px;
+.container-icon h2 {
+    margin: 30px;
+    font-weight: bold;
+    font-size: 30px;
 }
 
-.teks-jumlah{
+.teks-jumlah {
     font-size: 20px;
     font-weight: bold;
     color: #3498db;
 }
 
-.item-icon{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 50px;
-  border-right: 2px solid yellow;
+.item-icon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 50px;
+    border-right: 2px solid yellow;
 }
 
-.icon-radio{
-  margin-left: 100px;
-  display: flex;
-  margin-right: 40px;
+.icon-radio {
+    margin-left: 100px;
+    display: flex;
+    margin-right: 40px;
 }
 
-.icon-radio .item-icon{
-  margin: 0 20px;
+.icon-radio .item-icon {
+    margin: 0 20px;
 }
-
 
 @media only screen and (max-width: 768px) {
-.profil-teks h2{
-    font-weight: 500;
-    font-size: 25px;
-    text-align: center;
-    margin-bottom: 1rem;
-}
-  
-  .icon{
-    height: 60px;
-    width: 60px;
-  }
-  
-  .container-icon{
-    height: auto;
-  }
-  
-  .container-icon h2{
-    margin: 10px;
-    font-weight: 500;
-    font-size: 25px;
-    margin-bottom: 40px;
-  }
-  
-  .container-profil {
+    .profil-teks h2 {
+        font-weight: 500;
+        font-size: 25px;
+        text-align: center;
+        margin-bottom: 1rem;
+    }
+
+    .icon {
+        height: 60px;
+        width: 60px;
+    }
+
+    .container-icon {
+        height: auto;
+    }
+
+    .container-icon h2 {
+        margin: 10px;
+        font-weight: 500;
+        font-size: 25px;
+        margin-bottom: 40px;
+    }
+
+    .container-profil {
         flex-direction: column;
         text-align: center;
         padding-top: 0; /* Menyesuaikan tinggi navbar */
-  }
-  
-.container-profil img{
-    height: auto;
-    border-radius: 10px;
-    margin: 0;
-}
+    }
 
-  .container-icon {
-    flex-direction: column;
-    text-align: center;
-    width: 100%;
-    margin: 0;
-  }
+    .container-profil img {
+        height: auto;
+        border-radius: 10px;
+        margin: 0;
+    }
 
-  .icon-radio {
-    flex-direction: column;
-    margin: 0;
-  }
+    .container-icon {
+        flex-direction: column;
+        text-align: center;
+        width: 100%;
+        margin: 0;
+    }
 
-  .item-icon {
-    margin: 20px 0;
-    border-right: 0;
-  }
+    .icon-radio {
+        flex-direction: column;
+        margin: 0;
+    }
+
+    .item-icon {
+        margin: 20px 0;
+        border-right: 0;
+    }
 }
 
 .container-card {
@@ -414,7 +423,9 @@ section {
     padding: 20px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     text-align: center;
-    transition: background-color 0.3s, border-color 0.3s; /* Tambahkan transisi untuk efek hover */
+    transition:
+        background-color 0.3s,
+        border-color 0.3s; /* Tambahkan transisi untuk efek hover */
 }
 .card-icon {
     justify-content: center;
@@ -443,7 +454,9 @@ section {
 .card:active {
     background-color: #c3e6cb; /* Warna hijau lebih tua */
     border-color: #a1d1a7; /* Warna hijau lebih tua lagi untuk border */
-    transition: background-color 0.1s, border-color 0.1s; /* Animasi transisi lebih cepat */
+    transition:
+        background-color 0.1s,
+        border-color 0.1s; /* Animasi transisi lebih cepat */
 }
 
 @media (max-width: 768px) {
@@ -462,12 +475,17 @@ section {
     margin: 0;
     text-align: center;
     padding: 50px 0;
-    background: url('assets/header1.jpg') no-repeat center center;
+    background: url("assets/header1.jpg") no-repeat center center;
     background-size: cover;
 }
 
 .alumni-card {
-    background-color: rgba(255, 255, 255, 0.8); /* Transparansi agar teks lebih mudah dibaca */
+    background-color: rgba(
+        255,
+        255,
+        255,
+        0.8
+    ); /* Transparansi agar teks lebih mudah dibaca */
     padding: 20px;
     margin: 20px auto;
     width: 80%;
@@ -555,7 +573,7 @@ section {
 
 /* Gaya untuk Footer */
 .footer {
-    background-color: rgba(0,0,0,.8);
+    background-color: rgba(0, 0, 0, 0.8);
     padding: 50px 0;
     text-align: center;
     color: white !important;
@@ -588,14 +606,16 @@ section {
     text-align: left;
 }
 
-.footer-contact, .footer-social {
+.footer-contact,
+.footer-social {
     flex: 1;
     min-width: 200px;
     margin-bottom: 20px;
     text-align: left;
 }
 
-.footer-contact h4, .footer-social h4 {
+.footer-contact h4,
+.footer-social h4 {
     font-size: 1.2rem;
     margin-bottom: 10px;
 }
@@ -654,9 +674,9 @@ section {
 
 /* Responsif */
 @media (max-width: 768px) {
-  .footer-social .social-icon{
-    font-size: 30px;
-  }
+    .footer-social .social-icon {
+        font-size: 30px;
+    }
     .footer-container {
         flex-direction: column;
         text-align: center;
@@ -682,7 +702,9 @@ section {
 
 .fade-in-up {
     opacity: 0; /* Pastikan elemen tidak terlihat sebelum animasi */
-    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+    transition:
+        opacity 0.5s ease-out,
+        transform 0.5s ease-out;
 }
 
 .fade-in-up.show {
