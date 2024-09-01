@@ -9,6 +9,8 @@ document.addEventListener('DOMContentLoaded', () => {
             document.getElementById("sloganHeader").textContent = val.sloganhead;
             document.getElementById("deskHeader").textContent = val.deskripsihead;
             document.getElementById("ctaHeader").textContent = val.ctahead;
+            document.getElementById("IsiProfil").textContent = val.tentang
+            document.getElementById("visi").textContent = val.visi
         }
     })
     .catch(error => console.error('Error fetching data:', error));
