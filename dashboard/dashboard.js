@@ -17,7 +17,12 @@ function save() {
             jmlSantriLk: document.getElementById("jumlah-santri-lk").value,
             jmlSantriPr: document.getElementById("jumlah-santri-pr").value,
             jmlGuru: document.getElementById("jumlah-guru").value,
-            deskFooter: document.getElementById("desk-footer").value
+            deskFooter: document.getElementById("desk-footer").value,
+            logo: document.getElementById("logo").value,
+            headerBackground: document.getElementById("header-background").value,
+            imglogoProfil: document.getElementById("logo-profil").value,
+            imgProfil: document.getElementById("img-profil").value,
+            imgFooter: document.getElementById("img-footer").value
         })
     })
         .then(response => {
@@ -46,6 +51,12 @@ fetch(db + "cms.json")
             document.getElementById("jumlah-santri-pr").value = val.jmlSantriPr;
             document.getElementById("jumlah-guru").value = val.jmlGuru;
             document.getElementById("desk-footer").value = val.deskFooter;
+            document.getElementById("logo").value = val.logo;
+            document.getElementById("header-background").value = val.headerBackground;
+            document.getElementById("logo-profil").value = val.imglogoProfil;
+            document.getElementById("img-profil").value = val.imgProfil;
+            document.getElementById("img-").value = val.imgFooter;
+            
         }
     });
 
