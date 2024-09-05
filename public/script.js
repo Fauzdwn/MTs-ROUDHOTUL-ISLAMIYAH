@@ -26,11 +26,11 @@ document.addEventListener("DOMContentLoaded", () => {
                     val.jmlGuru;
                 document.getElementById("desk-footer").textContent =
                     val.deskFooter;
-               /* document.getElementById("logo").src = val.logo;
-                document.querySelector("header-background").bacground = val.headerBackground;
+                document.getElementById("logo").src = val.logo;
+                document.querySelector("#logo-profil").style.background = 'url(' + val.headerBackground + ')';
                 document.getElementById("logo-profil").src = val.imglogoProfil;
                 document.getElementById("imgProfil").src = val.imgProfil;
-                document.getElementById("img-footer").src = val.imgFooter;*/
+                document.getElementById("img-footer").src = val.imgFooter;
             }
         })
         .catch(error => console.error("Error fetching data:", error));
