@@ -40,19 +40,20 @@ document.addEventListener("DOMContentLoaded", () => {
         .then(data => {
             for (let key in data) {
                 var val = data[key];
-                var newElement = document.createElement("div")
-                newElement.classList.add("news-card")
+                var newElement = document.createElement("div");
+                newElement.classList.add("news-card");
                 newElement.addEventListener("click", () => {
                   window.location.href = "/berita/" + val.idBerita
                 })
                 newElement.innerHTML = `
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ42PoYN5pyRg18F0D-Rngi6UR8b-iacWNFCu5clK5EL55OM4LdQaDW970&s=10" class="w-100 mb-2 rounded-1" alt="">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ42PoYN5pyRg18F0D-Rngi6UR8b-iacWNFCu5clK5EL55OM4LdQaDW970&s=10" class="w-100 mb-2 rounded-1" alt="" id="banner" >
                 <h3>${val.titleBerita}</h3>
                 <p>
                     Baca Detail
                 </p>
                 `
-                document.getElementById("body-berita").appendChild(newElement)
+                document.getElementById("banner").src = val.banner;
+                document.getElementById("body-berita").appendChild(newElement);
             }
         })
         .catch(error => console.error("Error fetching data:", error));
