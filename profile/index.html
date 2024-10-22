@@ -1,229 +1,296 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="assets/logo2.jpg" type="image/x-icon" />
-    <title>MTs Roudhotul Islamiyah - Profil</title>
-    <link rel="stylesheet" href="../public/style.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-</head>
-<body>
-    <!--     buat animasi loading -->
-    <div id="loading-overlay" class="loading-overlay">
-        <div class="spinner"></div>
+<html>
+ <head>
+  <title>
+   Profile - Ponpes Nurul Islam Tengaran
+  </title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&amp;display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="../public/style.css" type="text/css" media="all" />
+  <style>
+   body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+        .header {
+            background-color: #ffffff;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #ddd;
+        }
+        .header img {
+            height: 50px;
+        }
+        .header .menu {
+            font-size: 24px;
+        }
+        .header .btn {
+            background-color: #fbb03b;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .main {
+            text-align: center;
+            padding: 20px;
+        }
+        .main img {
+            width: 100%;
+            max-height: 300px;
+            object-fit: cover;
+        }
+        .main h1 {
+            font-size: 36px;
+            margin: 20px 0;
+        }
+        .main h2 {
+            font-size: 24px;
+            color: #777;
+            margin-bottom: 20px;
+        }
+        .content {
+            background-color: white;
+            padding: 20px;
+            margin: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .content h3 {
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+        .content p {
+            font-size: 16px;
+            line-height: 1.6;
+            text-align: justify;
+        }
+        .timeline {
+            margin: 20px 0;
+        }
+        .timeline-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .timeline-item .year {
+            font-size: 20px;
+            font-weight: bold;
+            width: 100px;
+        }
+        .timeline-item .circle {
+            width: 20px;
+            height: 20px;
+            background-color: #4caf50;
+            border-radius: 50%;
+            margin: 0 20px;
+        }
+        .timeline-item .description {
+            font-size: 16px;
+        }
+        .visi-misi {
+            background-color: #4caf50;
+            color: white;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 10px;
+        }
+        .visi-misi h3 {
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+        .visi-misi ul {
+            list-style: none;
+            padding: 0;
+        }
+        .visi-misi ul li {
+            font-size: 16px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        .visi-misi ul li i {
+            margin-right: 10px;
+        }
+        .struktur-organisasi {
+            text-align: center;
+            margin: 20px 0;
+        }
+        .struktur-organisasi img {
+            max-width: 100%;
+        }
+        .pimpinan {
+            text-align: center;
+            margin: 20px 0;
+        }
+        .pimpinan img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        .pimpinan h4 {
+            font-size: 20px;
+            margin: 10px 0;
+        }
+        .footer {
+            background-color: #ffffff;
+            padding: 20px;
+            text-align: center;
+            border-top: 1px solid #ddd;
+        }
+        .footer img {
+            height: 50px;
+            margin-bottom: 20px;
+        }
+        .footer p {
+            font-size: 14px;
+            color: #777;
+            margin: 10px 0;
+        }
+        .footer .social-icons {
+            margin: 20px 0;
+        }
+        .footer .social-icons i {
+            font-size: 24px;
+            color: #4caf50;
+            margin: 0 10px;
+            cursor: pointer;
+        }
+        .footer .contact-info {
+            font-size: 14px;
+            color: #777;
+        }
+  </style>
+ </head>
+ <body>
+  <div class="header">
+   <img alt="Logo Ponpes Nurul Islam Tengaran" height="50" src="https://raw.githubusercontent.com/Fauzdwn/MTs-ROUDHOTUL-ISLAMIYAH/refs/heads/main/public/images/logos.png" width="50"/>
+   <div class="menu">
+    <i class="fas fa-bars">
+    </i>
+   </div>
+  </div>
+  <div class="main">
+   <img alt="Image of Ponpes Nurul Islam Tengaran" height="300" src="https://mts-roudhotul-islamiyah.netlify.app/public/images/header1.jpg" width="1200"/>
+   <h1>
+    Profile
+   </h1>
+   <h2>
+    Ponpes Nurul Islam Tengaran
+   </h2>
+  </div>
+  <div class="content">
+   <h3>
+    Sejarah
+   </h3>
+   <p>
+    Pesantren ini didirikan oleh KH. Zainal Mahmud pada tahun 1978 di Kecamatan Tengaran, Kabupaten Semarang, Jawa Tengah. Pesantren ini bertujuan untuk mencetak generasi yang berakhlak mulia dan berilmu pengetahuan yang luas. Pada awalnya, pesantren ini hanya memiliki beberapa santri, namun seiring berjalannya waktu, jumlah santri semakin bertambah.
+   </p>
+   <div class="timeline">
+    <div class="timeline-item">
+     <div class="year">
+      1978
+     </div>
+     <div class="circle">
+     </div>
+     <div class="description">
+      Pendiri Pesantren KH. Zainal Mahmud memulai kegiatan belajar mengajar di rumahnya dengan beberapa santri.
+     </div>
     </div>
-    <!-- navbar -->
-    <nav class="navbar navbar-expand-lg shadow-lg bg-light">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#"><img src="https://i.ibb.co.com/865JWCz/logos-1-removebg-preview.png" style="width:50px;" alt="" id="logo"></a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="bi bi-list"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="../index.html">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="#">Profile</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="../berita/index.html">Berita</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="galeri/index.html">Galeri</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="contact/index.html">Contact</a>
-                    </li>
-                    <li class="nav-item login-false">
-                        <button class="nav-link btn bg-primary rounded-1 text-light px-3" onclick="window.location.href = '/login/index.html'">Login/register</button>
-                    </li>
-                    <li class="nav-item login-true">
-                        <button class="nav-link btn bg-danger rounded-1 text-light px-3" onclick="logout()">Logout</button>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-
-
-    <header id="header">
-        <div class="header-background"></div>
-        <div class="header-content container w-100 vh-100 justify-content-center text-light d-flex flex-column align-items-center">
-            <h1 id="judulHeader" class="text-uppercase m-0 fw-bold text-center">Selamat Datang di MTs Roudhotul Islamiyah</h1>
-            <p id="sloganHeader" style="color:#3498db" class="m-0 fw-bold">
-                Mencetak Generasi Berprestasi dan Berakhlak Mulia
-            </p>
-            <p id="deskHeader" class="m-0 text-center">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae, quae! Iusto soluta inventore ut aliquid voluptatibus deleniti eos, repellat saepe quos nemo dolores aliquam ea nesciunt tempora reiciendis mollitia qui neque praesentium culpa dignissimos magni deserunt nulla animi commodi sunt. Assumenda, repudiandae dicta itaque? Inventore nemo fugit excepturi quos nesciunt.
-            </p>
-            <button class="mt-2 text-uppercase px-4 py-2" id="ctaHeader" style="background:#3498db;color:#F0F4C3;border:0;">Kenali kami lebih jauh <i class="bi bi-arrow-right"></i></button>
-        </div>
-    </header>
-
-    <main id="body">
-        <section id="profil pb-3">
-            <div class="container-profil">
-                <div class="profil-teks">
-                    <img src="https://i.ibb.co.com/865JWCz/logos-1-removebg-preview.png" style="width:200px;height:200px;" alt="logo sekolah" id="logo-profil">
-                    <h1 class="m-0 mt-2">Tentang</h1>
-                    <h2 id="JudulProfil">MTs Roudhotul Islamiyah</h2>
-                    <p id="IsiProfil" class="text-center m-0">
-                        MTs Roudhotul Islamiyah berdedikasi untuk memberikan pendidikan berkualitas yang berfokus pada pengembangan karakter dan prestasi siswa.
-                    </p>
-                    <div class="d-flex my-2 gap-3 text-decoration-none" style="font-size:1.5em">
-                        <a href="#" class="bi bi-instagram text-secondary"></a>
-                        <a href="https://www.facebook.com/profile.php?id=100064166644323" class="bi bi-facebook text-secondary"></a>
-                        <a href="#" class="bi bi-youtube text-secondary"></a>
-                    </div>
-                </div>
-                <img src="public/images/header1.jpg" alt="banner" id="imgProfil" />
-            </div>
-                <div class="mt-3 mb-2 container text-center py-3">
-                    <h4 class="m-0" >Visi</h4>
-                    <p id="visi">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est illum, quis perferendis aut modi adipisci.
-                    </p>
-                    <h4 class="m-0">Misi</h4>
-                    <p id="misi">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestiae facere fugit, quibusdam fugiat ex dolorum.
-                    </p>
-                    <a href="Profil.html" class="btn btn-warning">Selengkapnya</a>
-                </div>
-        </section>
-        <section style="background:#fff" class="my-3">
-        <div class="container-icon container pb-2">
-            <h2 style="margin:0;" class="pb-2 container pt-4">Menjadi Bagian dari MTs Roudhotul Islamiyah</h2>
-            <div class="icon-radio">
-                <div class="item-icon">
-                    <img src="public/images/cewek.png" alt="Santri Wanita" class="icon"> <!-- Ikon santri wanita -->
-                    <span id="jumlah-santri-pr" class="teks-jumlah">0</span>
-                    <p class="teks-jumlah">
-                        Santri
-                    </p>
-                </div>
-                <div class="item-icon">
-                    <img src="public/images/cowok.png" alt="Santri Pria" class="icon"> <!-- Ikon santri pria -->
-                    <span id="jumlah-santri-lk" class="teks-jumlah">0</span>
-                    <p class="teks-jumlah">
-                        Santri
-                    </p>
-                </div>
-                <div class="item-icon">
-                    <img src="public/images/guru.png" alt="Guru/Pengajar" class="icon"/> <!-- Ikon guru atau pengajar -->
-                    <span id="jumlah-guru" class="teks-jumlah">0</span>
-                    <p class="teks-jumlah">
-                        Guru & Karyawan
-                    </p>
-                </div>
-            </div>
-        </div>
-        </section>
-        <section id="icon">
-            <div class="container-card">
-                <h2>Mengapa Sekolah di MTs Roudhotul Islamiyah?</h2>
-                <div class="icon-cards">
-                    <div class="card">
-                        <div class="card-icon">
-                            <img src="https://www.svgrepo.com/show/454130/education-learning-18.svg" alt="Icon 1">
-                        </div>
-                        <h3 id="JudulKeunggulan1">Pendidikan Berkelanjutan</h3>
-                        <p id="deskripsiunggulan1">
-                            Terdapat pendidikan yang berkelanjutan dari jenjang KB/TKIT sampai SMA/MA.
-                        </p>
-                    </div>
-                    <div class="card">
-                        <div class="card-icon">
-                            <img src="https://www.svgrepo.com/show/454128/education-learning-25.svg" alt="Icon 2">
-                        </div>
-                        <h3 id="JudulKeunggulan2">Kegiatan & Ekstrakurikuler</h3>
-                        <p id="deskripsiunggulan2">
-                            Memanah, Multimedia, English Club, Pramuka, Futsal, Qiro'ah, PMR, KIR, Kaligrafi, Rebana, Tata Boga, Jurnalistik, Renang.
-                        </p>
-                    </div>
-                    <div class="card">
-                        <div class="card-icon">
-                            <img src="https://www.svgrepo.com/show/436133/education-bag-learning-31.svg" alt="Icon 3">
-                        </div>
-                        <h3 id="JudulKeunggulan3">Program Unggulan</h3>
-                        <p id="deskripsiunggulan3">
-                            Bina Pribadi Islam, Nurul Islam Fair, Study Tour, Muhadoroh (pidato 3 bahasa), Al-Qur'an Camp, Language Camp, Outbound, Perkemahan Santri.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Carousel untuk Alumni -->
-        <section id="alumni">
-            <div class="container-alumni">
-                <h2>Kata Alumni</h2>
-                <div id="alumniCarousel" class="carousel slide" data-bs-ride="carousel">
-                    <div class="carousel-inner">
-                        <div class="carousel-item active">
-                            <div class="alumni-card">
-                                <div class="alumni-name" id="namaAlumni1">
-                                    Nama Alumni 1
-                                </div>
-                                <div class="alumni-photo">
-                                    <img src="https://www.svgrepo.com/show/484027/people-2.svg" alt="Alumni 1" id="fotoAlumni1">
-                                </div>
-                                <div class="alumni-quote" id="kataAlumni1">
-                                    "Kata-kata alumni 1. Pengalaman belajar yang luar biasa di MTs Roudhotul Islamiyah."
-                                </div>
-                            </div>
-                        </div>
-                        <div class="carousel-item">
-                            <div class="alumni-card">
-                                <div class="alumni-name" id="namaAlumni2">
-                                    Nama Alumni 2
-                                </div>
-                                <div class="alumni-photo">
-                                    <img src="https://www.svgrepo.com/show/484027/people-2.svg" alt="Alumni 2" id="fotoAlumni2">
-                                </div>
-                                <div class="alumni-quote" id="kataAlumni2">
-                                    "Kata-kata alumni 2. Pendidikan yang menginspirasi dan mendukung perkembangan pribadi."
-                                </div>
-                            </div>
-                        </div>
-                        <div class="carousel-item">
-                            <div class="alumni-card">
-                                <div class="alumni-name" id="namaAlumni3">
-                                    Nama Alumni 3
-                                </div>
-                                <div class="alumni-photo">
-                                    <img src="https://www.svgrepo.com/show/484027/people-2.svg" alt="Alumni 3" id="fotoAlumni3">
-                                </div>
-                                <div class="alumni-quote" id="kataAlumni3">
-                                    "Kata-kata alumni 3. MTs Roudhotul Islamiyah memberikan fondasi yang kuat untuk masa depan."
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <button class="carousel-control-prev" type="button" data-bs-target="#alumniCarousel" data-bs-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Previous</span>
-                    </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#alumniCarousel" data-bs-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Next</span>
-                    </button>
-                </div>
-            </div>
-        </section>
-        <!-- Section Berita Terbaru -->
-        <section class="container-news">
-            <h2>Berita Terbaru</h2>
-            <div class="d-flex justify-content-center gap-3 flex-wrap" id="body-berita">
-            </div>
-            <button class="load-more">Selengkapnya</button>
-        </section>
-    </main>
+    <div class="timeline-item">
+     <div class="year">
+      1985
+     </div>
+     <div class="circle">
+     </div>
+     <div class="description">
+      Pembangunan asrama santri dimulai.
+     </div>
+    </div>
+    <div class="timeline-item">
+     <div class="year">
+      2001
+     </div>
+     <div class="circle">
+     </div>
+     <div class="description">
+      Pendirian Madrasah Aliyah Nurul Islam.
+     </div>
+    </div>
+    <div class="timeline-item">
+     <div class="year">
+      2010
+     </div>
+     <div class="circle">
+     </div>
+     <div class="description">
+      Pendirian Sekolah Tinggi Ilmu Tarbiyah Nurul Islam.
+     </div>
+    </div>
+    <div class="timeline-item">
+     <div class="year">
+      2013
+     </div>
+     <div class="circle">
+     </div>
+     <div class="description">
+      Pendirian SMK Nurul Islam.
+     </div>
+    </div>
+   </div>
+  </div>
+  <div class="visi-misi">
+   <h3>
+    Visi &amp; Misi
+   </h3>
+   <ul>
+    <li>
+     <i class="fas fa-check-circle">
+     </i>
+     Menyelenggarakan lembaga pendidikan yang menghasilkan generasi cerdas, mandiri, berjiwa pemimpin dan berakhlak mulia.
+    </li>
+    <li>
+     <i class="fas fa-check-circle">
+     </i>
+     Menjadi lembaga rujukan dalam penyelenggaraan sistem pendidikan.
+    </li>
+    <li>
+     <i class="fas fa-check-circle">
+     </i>
+     Menyelenggarakan usaha produktif yang mendukung kemandirian lembaga pendidikan.
+    </li>
+    <li>
+     <i class="fas fa-check-circle">
+     </i>
+     Menjadi lembaga pendidikan yang memiliki jaringan regional, nasional dan global.
+    </li>
+    <li>
+     <i class="fas fa-check-circle">
+     </i>
+     Menjadi lembaga yang memberikan manfaat bagi masyarakat.
+    </li>
+   </ul>
+  </div>
+  <div class="struktur-organisasi">
+   <h3>
+    Struktur Organisasi
+   </h3>
+   <img alt="Struktur Organisasi Ponpes Nurul Islam Tengaran" height="400" src="https://storage.googleapis.com/a1aa/image/wOey4bA3HXxXPKzK9932sBYngRGpeASXmqptsxgFfU7MeblOB.jpg" width="800"/>
+  </div>
+  <div class="pimpinan">
+   <h3>
+    Pimpinan Lembaga
+   </h3>
+   <img alt="Foto Pimpinan Lembaga" height="150" src="https://storage.googleapis.com/a1aa/image/ZRexCIcfn9lkOEoZScIASgrfeEIV6qSrs5BnxIaMIjkV8blOB.jpg" width="150"/>
+   <h4>
+    (alm) KH. Zainal Mahmud, BA
+   </h4>
+  </div>
     <!-- Footer -->
     <footer class="footer px-3" id="footer">
         <div class="footer-container gap-3">
@@ -272,7 +339,6 @@
             </p>
         </div>
     </footer>
-
-    <script src="../public/script.js"></script>
-</body>
+        <script src="../public/script.js"></script>
+ </body>
 </html>
