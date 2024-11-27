@@ -1,3 +1,10 @@
+const menuIcon = document.getElementById("menu-icon");
+const menuList = document.getElementById("menu-list");
+
+menuIcon.addEventListener("click", () => {
+  menuList.classList.toggle("hidden");
+});
+
 document.addEventListener("DOMContentLoaded", () => {
     var db = "https://mtsri-db-default-rtdb.firebaseio.com/";
     // fetch cms
@@ -73,3 +80,4 @@ function logout() {
     alert("success logout");
     location.reload();
 }
+

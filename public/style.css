@@ -19,6 +19,7 @@ body {
 }
 
 .navbar {
+    position: sticky;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -69,60 +70,79 @@ main {
     }
 }
 nav {
-    /*position: none;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0.5rem 1rem;
-    width: 100%;
-    top: 0;
-    z-index: 1000;
-    opacity: 0; 
-    */
-    /*
-    transform: translateY(-100%);
-    transition: opacity 1.5s ease, transform 1.5s ease; 
-    background-color: #8BC34A; 
-    color: #FFEB3B; 
-    */
+  background-color: white;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 20px;
+  border-radius: 50px;
+  width: 90%;
+  height: 10%;
+  margin: 20px auto;
 }
-.navbar {
-    width: 100%;
-    position: fixed !important;
-    z-index: 9999;
-    top: 0;
-    left: 0;
+
+nav ul {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  list-style: none;
 }
-.nav-link {
-    padding-left: 10px !important;
-    color: #3498db !important;
+
+nav ul li a {
+  text-decoration: none;
+  font-family: "Segoe UI", sans-serif;
+  color: #191919;
+  font-weight: 600;
+  padding: 8px 0;
+  transition: all;
+  transition-duration: 300ms;
+  border-bottom: 1px solid rgba(255, 68, 0, 0);
 }
-.active {
-    border-radius: 5px !important;
-    background: #f0f4c3 !important;
-}
-.navbar-toggler {
-    z-index: 999999;
-    background: #f0f4c3 !important;
-    border: 0 !important;
-}
-.navbar-toggler:hover,
-.navbar-toggler:active,
-.navbar-toggler:focus {
-    box-shadow: 0 0 0 !important;
-}
-.navbar-nav {
-    padding-top: 10px;
-}
-.navbar-toggler span {
-    font-size: 1.5em;
-    color: #3498db !important;
+
+nav ul li a:hover {
+  color: orangered;
+  border-bottom: 1px solid orangered;
 }
 
 .menu-icon {
-    font-size: 28px;
+/*   background-color: tomato; */
+  font-size: 28px;
+  display: none;
+}
+
+nav div img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50px;
+}
+
+@media only screen and (max-width: 768px) {
+  nav {
+  flex-wrap: wrap;
+  background-color: white;
+  border-radius: 40px;
+  width: 85%;
+  height: auto;
+  margin: 20px auto;
+  }
+
+  nav ul {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  nav ul li:last-of-type {
+    padding-bottom: 8px;
+  }
+
+  nav ul.hidden {
     display: none;
-    cursor: pointer;
+  }
+
+  .menu-icon {
+    display: flex;
+    align-items: center;
+    font-size: 30px;
+  }
 }
 
 @media only screen and (max-width: 500px) {
