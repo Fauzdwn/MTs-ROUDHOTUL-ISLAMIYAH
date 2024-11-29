@@ -18,66 +18,27 @@ body {
   color: red;
 }
 
-.navbar {
-    position: sticky;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background-color: #301b54; /* Warna ungu */
-    padding: 10px 20px;
-    border-radius: 50px;
-    width: 70%;
-    height: 10%;
-    margin: 20px auto;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-}
-
 main {
     padding: 0 !important;
     margin: 0 !important;
     width: 100%;
     overflow-x: hidden !important;
 }
-/* style untuk animasi Loading         layar yang tampil saat Loading*/
-.loading-overlay {
-    position: fixed;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    display: none !important;
-    background-color: #f0f4c3;
-    z-index: 1000;
+
+nav {
+    background-color: #301b54;
     display: flex;
     align-items: center;
-    justify-content: center;
-}
-/* Loading spinner */
-.spinner {
-    border: 2px solid #f0f4c3;
-    border-top: 3px solid #3498db;
-    border-radius: 50%;
-    width: 50px;
-    height: 50px;
-    animation: spin 1s linear infinite;
-}
-@keyframes spin {
-    0% {
-        transform: rotate(0deg);
-    }
-    100% {
-        transform: rotate(360deg);
-    }
-}
-nav {
-  background-color: white;
-  display: flex;
-  justify-content: space-between;
-  padding: 10px 20px;
-  border-radius: 50px;
-  width: 90%;
-  height: 10%;
-  margin: 20px auto;
+    z-index: 1000; /* Pastikan navbar berada di atas elemen lain */
+    justify-content: space-between;
+    padding: 10px 20px;
+    border-radius: 50px;
+    width: 90%;
+    height: 10%;
+    margin: 0 auto;
+    position: sticky; /* Sticky navbar */
+    top: 20px; /* Jarak dari atas saat sticky */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
 }
 
 nav ul {
@@ -118,12 +79,18 @@ nav div img {
 @media only screen and (max-width: 768px) {
   nav {
   flex-wrap: wrap;
-  background-color: white;
+  background-color: #301b54;
   border-radius: 40px;
   width: 85%;
   height: auto;
   margin: 20px auto;
   }
+
+nav div img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50px;
+}
 
   nav ul {
     flex-direction: column;
@@ -194,13 +161,11 @@ nav div img {
     }
 }
 
-.header-content,
-.header-image {
-    opacity: 1; /* Awal animasi */
+.header-content {
+    opacity: 0; /* Awal animasi */
 }
 
-.header-content.animate,
-.header-image.animate {
+.header-content.animate {
     opacity: 1; /* Akhir animasi */
 }
 
@@ -208,9 +173,6 @@ nav div img {
     animation: slideInLeft 1.5s forwards;
 }
 
-.header-image.animate {
-    animation: slideInRight 1.5s forwards;
-}
 
 #header {
     position: relative;
@@ -219,25 +181,23 @@ nav div img {
     background: #000;
     justify-content: space-between;
     align-items: center;
-    margin: 0 !important;
-    padding-top: 70px; /* Menyesuaikan tinggi navbar */
+    margin: 0;
+    padding-top: 0;
 }
 
 .header-background {
-    margin: 0;
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     background: url("images/header1.jpg") center/cover no-repeat fixed;
-    filter: blur(1px); /* Blur hanya pada background */
+    filter: blur(1px);
     z-index: 0;
     opacity: 0.4;
 }
 
-.header-content,
-.header-image {
+.header-content {
     position: relative;
     z-index: 1;
 }
@@ -252,16 +212,6 @@ nav div img {
 .header-content p {
     font-size: 1.5em !important;
 }
-.header-image img {
-    width: 100%;
-    max-width: 500px;
-    height: auto;
-    border-radius: 10px;
-}
-
-.header-image {
-    margin-right: 70px;
-}
 
 @media only screen and (max-width: 768px) {
     header {
@@ -275,12 +225,6 @@ nav div img {
         max-width: 100%;
         margin-bottom: 0.5rem; /* Kurangi jarak margin bawah */
         margin: 0;
-    }
-
-    .header-image {
-        max-width: 100%;
-        margin-top: 0.5rem; /* Kurangi jarak margin atas */
-        margin: 30px;
     }
 
     .header-content h1 {
