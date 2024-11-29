@@ -25,49 +25,52 @@ main {
     overflow-x: hidden !important;
 }
 
+/* Navbar */
 nav {
-    background-color: #301b54;
+    background-color: rgba(255, 255, 255, 0.8);
     display: flex;
     align-items: center;
-    z-index: 1000; /* Pastikan navbar berada di atas elemen lain */
+    z-index: 1000;
     justify-content: space-between;
     padding: 10px 20px;
     border-radius: 50px;
     width: 90%;
-    height: 10%;
-    margin: 0 auto;
-    position: sticky; /* Sticky navbar */
-    top: 20px; /* Jarak dari atas saat sticky */
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(10px);
+    transition: background-color 0.3s ease-in-out;
 }
 
+/* Navbar Links */
 nav ul {
-  display: flex;
-  align-items: center;
-  gap: 2rem;
-  list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    list-style: none;
 }
 
 nav ul li a {
-  text-decoration: none;
-  font-family: "Segoe UI", sans-serif;
-  color: #191919;
-  font-weight: 600;
-  padding: 8px 0;
-  transition: all;
-  transition-duration: 300ms;
-  border-bottom: 1px solid rgba(255, 68, 0, 0);
+    text-decoration: none;
+    font-family: "Segoe UI", sans-serif;
+    color: #191919;
+    font-weight: 600;
+    padding: 8px 0;
+    transition: all 300ms;
+    border-bottom: 1px solid rgba(255, 68, 0, 0);
 }
 
 nav ul li a:hover {
-  color: orangered;
-  border-bottom: 1px solid orangered;
+    color: orangered;
+    border-bottom: 1px solid orangered;
 }
 
+/* Menu Icon (Mobile View) */
 .menu-icon {
-/*   background-color: tomato; */
-  font-size: 28px;
-  display: none;
+    font-size: 40px;
+    display: none;
 }
 
 nav div img {
@@ -79,7 +82,7 @@ nav div img {
 @media only screen and (max-width: 768px) {
   nav {
   flex-wrap: wrap;
-  background-color: #301b54;
+  background-color: white;
   border-radius: 40px;
   width: 85%;
   height: auto;
@@ -214,10 +217,11 @@ nav div img {
 }
 
 @media only screen and (max-width: 768px) {
-    header {
+    #header {
         flex-direction: column;
         text-align: center;
-        padding-top: 70px; /* Menyesuaikan tinggi navbar */
+        padding-top: 0;
+        margin-top: 0;
         padding-bottom: 180px;
     }
 
