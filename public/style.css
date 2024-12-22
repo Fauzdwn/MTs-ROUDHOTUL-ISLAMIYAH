@@ -67,7 +67,6 @@ nav ul li a:hover {
     border-bottom: 1px solid orangered;
 }
 
-/* Menu Icon (Mobile View) */
 .menu-icon {
     font-size: 40px;
     display: none;
@@ -79,104 +78,7 @@ nav div img {
     border-radius: 50px;
 }
 
-@media only screen and (max-width: 768px) {
-  nav {
-  flex-wrap: wrap;
-  background-color: white;
-  border-radius: 40px;
-  width: 85%;
-  height: auto;
-  margin: 20px auto;
-  }
-
-nav div img {
-    width: 40px;
-    height: 40px;
-    border-radius: 50px;
-}
-
-  nav ul {
-    flex-direction: column;
-    width: 100%;
-  }
-
-  nav ul li:last-of-type {
-    padding-bottom: 8px;
-  }
-
-  nav ul.hidden {
-    display: none;
-  }
-
-  .menu-icon {
-    display: flex;
-    align-items: center;
-    font-size: 30px;
-  }
-}
-
-@media only screen and (max-width: 500px) {
-    #judulHeader {
-        font-size: 2.5em !important;
-    }
-    #deskHeader {
-        font-size: 1em !important;
-    }
-}
-
-@media only screen and (max-width: 768px) {
-    .logo span {
-        display: none;
-    }
-    .menu-icon {
-        display: flex;
-        align-items: center;
-    }
-}
-@media only screen and (min-width: 768px) {
-    .navbar-collapse {
-        position: absolute;
-        right: 25px;
-        top: 10px;
-    }
-}
-
-/* Animasi Slide In */
-@keyframes slideInLeft {
-    from {
-        transform: translateX(-100%);
-        opacity: 0;
-    }
-    to {
-        transform: translateX(0);
-        opacity: 1;
-    }
-}
-
-@keyframes slideInRight {
-    from {
-        transform: translateX(100%);
-        opacity: 0;
-    }
-    to {
-        transform: translateX(0);
-        opacity: 1;
-    }
-}
-
-.header-content {
-    opacity: 0; /* Awal animasi */
-}
-
-.header-content.animate {
-    opacity: 1; /* Akhir animasi */
-}
-
-.header-content.animate {
-    animation: slideInLeft 1.5s forwards;
-}
-
-
+/* header */
 #header {
     position: relative;
     min-height: 100vh; /* Full layar */
@@ -216,30 +118,8 @@ nav div img {
     font-size: 1.5em !important;
 }
 
-@media only screen and (max-width: 768px) {
-    #header {
-        flex-direction: column;
-        text-align: center;
-        padding-top: 0;
-        margin-top: 0;
-        padding-bottom: 180px;
-    }
 
-    .header-content {
-        max-width: 100%;
-        margin-bottom: 0.5rem; /* Kurangi jarak margin bawah */
-        margin: 0;
-    }
-
-    .header-content h1 {
-        margin-bottom: 0.5rem; /* Kurangi jarak margin bawah */
-    }
-
-    .header-content p {
-        margin-bottom: 0.5rem; /* Kurangi jarak margin bawah */
-    }
-}
-
+/* profile */
 section {
     padding: 0;
 }
@@ -278,9 +158,6 @@ section {
     height: auto;
     border-radius: 10px;
     margin: 30px;
-}
-
-.profil-teks button {
 }
 
 .icon {
@@ -327,60 +204,8 @@ section {
     margin: 0 20px;
 }
 
-@media only screen and (max-width: 768px) {
-    .profil-teks h2 {
-        font-weight: 500;
-        font-size: 25px;
-        text-align: center;
-        margin-bottom: 1rem;
-    }
 
-    .icon {
-        height: 60px;
-        width: 60px;
-    }
-
-    .container-icon {
-        height: auto;
-    }
-
-    .container-icon h2 {
-        margin: 10px;
-        font-weight: 500;
-        font-size: 25px;
-        margin-bottom: 40px;
-    }
-
-    .container-profil {
-        flex-direction: column;
-        text-align: center;
-        padding-top: 0; /* Menyesuaikan tinggi navbar */
-    }
-
-    .container-profil img {
-        height: auto;
-        border-radius: 10px;
-        margin: 0;
-    }
-
-    .container-icon {
-        flex-direction: column;
-        text-align: center;
-        width: 100%;
-        margin: 0;
-    }
-
-    .icon-radio {
-        flex-direction: column;
-        margin: 0;
-    }
-
-    .item-icon {
-        margin: 20px 0;
-        border-right: 0;
-    }
-}
-
+/* contain card */
 .container-card {
     max-width: 1200px;
     margin: 0 auto;
@@ -443,17 +268,6 @@ section {
     transition:
         background-color 0.1s,
         border-color 0.1s; /* Animasi transisi lebih cepat */
-}
-
-@media (max-width: 768px) {
-    .icon-cards {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .card {
-        width: 90%;
-    }
 }
 
 /* Gaya untuk Alumni */
@@ -547,14 +361,6 @@ section {
 .load-more:hover {
     background-color: #ff9800;
     color: #fff;
-}
-
-/* Responsif */
-@media (max-width: 768px) {
-    .alumni-card,
-    .news-card {
-        width: 90%;
-    }
 }
 
 /* Gaya untuk Footer */
@@ -658,8 +464,140 @@ section {
     margin: 0 0;
 }
 
-/* Responsif */
-@media (max-width: 768px) {
+
+/* view mobail */
+@media only screen and (max-width: 768px) {
+  /* navbar */
+  nav {
+  flex-wrap: wrap;
+  background-color: white;
+  border-radius: 40px;
+  width: 85%;
+  height: auto;
+  margin: 20px auto;
+  }
+
+nav div img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50px;
+}
+
+  nav ul {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  nav ul li:last-of-type {
+    padding-bottom: 8px;
+  }
+
+  nav ul.hidden {
+    display: none;
+  }
+
+  .menu-icon {
+    display: flex;
+    align-items: center;
+    font-size: 30px;
+  }
+  .navbar-collapse {
+        position: absolute;
+        right: 25px;
+        top: 10px;
+    }
+    
+    /* header */
+        #header {
+        flex-direction: column;
+        text-align: center;
+        padding-top: 0;
+        margin-top: 0;
+        padding-bottom: 180px;
+    }
+
+    .header-content {
+        max-width: 100%;
+        margin-bottom: 0.5rem; /* Kurangi jarak margin bawah */
+        margin: 0;
+    }
+
+    .header-content h1 {
+        margin-bottom: 0.5rem; /* Kurangi jarak margin bawah */
+    }
+
+    .header-content p {
+        margin-bottom: 0.5rem; /* Kurangi jarak margin bawah */
+    }
+    
+    /* profile */
+    .profil-teks h2 {
+        font-weight: 500;
+        font-size: 25px;
+        text-align: center;
+        margin-bottom: 1rem;
+    }
+
+    .icon {
+        height: 60px;
+        width: 60px;
+    }
+
+    .container-icon {
+        height: auto;
+    }
+
+    .container-icon h2 {
+        margin: 10px;
+        font-weight: 500;
+        font-size: 25px;
+        margin-bottom: 40px;
+    }
+
+    .container-profil {
+        flex-direction: column;
+        text-align: center;
+        padding-top: 0; /* Menyesuaikan tinggi navbar */
+    }
+
+    .container-profil img {
+        height: auto;
+        border-radius: 10px;
+        margin: 0;
+    }
+
+    .container-icon {
+        flex-direction: column;
+        text-align: center;
+        width: 100%;
+        margin: 0;
+    }
+
+    .icon-radio {
+        flex-direction: column;
+        margin: 0;
+    }
+
+    .item-icon {
+        margin: 20px 0;
+        border-right: 0;
+    }
+    
+/* contain card */
+    .icon-cards {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .card {
+        width: 90%;
+    }
+    
+    .alumni-card,
+    .news-card {
+        width: 90%;
+    }
+    
     .footer-social .social-icon {
         font-size: 30px;
     }
@@ -672,28 +610,16 @@ section {
         flex-direction: column;
         text-align: center;
     }
+
 }
 
-/* Tambahkan ini di akhir file CSS */
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(50px);
+
+/* view tablet */
+@media only screen and (max-width: 500px) {
+    #judulHeader {
+        font-size: 2.5em !important;
     }
-    to {
-        opacity: 1;
-        transform: translateY(0);
+    #deskHeader {
+        font-size: 1em !important;
     }
-}
-
-.fade-in-up {
-    opacity: 0; /* Pastikan elemen tidak terlihat sebelum animasi */
-    transition:
-        opacity 0.5s ease-out,
-        transform 0.5s ease-out;
-}
-
-.fade-in-up.show {
-    opacity: 1;
-    transform: translateY(0);
 }

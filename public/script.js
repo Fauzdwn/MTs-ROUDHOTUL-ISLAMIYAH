@@ -53,7 +53,7 @@ document.addEventListener("DOMContentLoaded", () => {
                   window.location.href = "/berita/" + val.idBerita
                 })
                 newElement.innerHTML = `
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ42PoYN5pyRg18F0D-Rngi6UR8b-iacWNFCu5clK5EL55OM4LdQaDW970&s=10" class="w-100 mb-2 rounded-1" alt="">
+                <img src="${val.banner}" class="w-100 mb-2 rounded-1" alt="">
                 <h3>${val.titleBerita}</h3>
                 <p>
                     Baca Detail

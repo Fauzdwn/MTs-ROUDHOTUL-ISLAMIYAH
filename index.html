@@ -34,11 +34,16 @@
         <li>
           <a href="#">Contact</a>
         </li>
+        <li class="nav-item login-false">         
+        <button class="nav-link btn bg-primary rounded-1 text-light px-3" onclick="window.location.href = '/login/index.html'">Login/register</button>
+                    </li>
+                    <li class="nav-item login-true">
+                        <button class="nav-link btn bg-danger rounded-1 text-light px-3" onclick="logout()">Logout</button></li>
       </ul>
     </nav>
     <header id="header">
       <div class="header-background"></div>
-        <div class="header-content animate container w-100 vh-100 justify-content-center text-light d-flex flex-column align-items-center">
+        <div class="header-content container w-100 vh-100 justify-content-center text-light d-flex flex-column align-items-center">
             <h1 id="judulHeader" class="text-uppercase m-0 fw-bold text-center">Selamat Datang di MTs Roudhotul Islamiyah</h1>
             <p id="sloganHeader" style="color:#3498db" class="m-0 fw-bold">
                 Mencetak Generasi Berprestasi dan Berakhlak Mulia
