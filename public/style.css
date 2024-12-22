@@ -15,7 +15,7 @@ body {
 }
 
 .collaps {
-  color: red;
+    color: red;
 }
 
 main {
@@ -73,21 +73,22 @@ nav ul li a:hover {
 }
 
 nav div img {
-    width: 50px;
-    height: 50px;
-    border-radius: 50px;
+    width: 40px;
+    height: 40px;
+    border-radius: 40px;
 }
 
 /* header */
 #header {
     position: relative;
-    min-height: 100vh; /* Full layar */
+    min-height: 100vh;
+    /* Full layar */
     display: flex;
     background: #000;
     justify-content: space-between;
     align-items: center;
     margin: 0;
-    padding-top: 0;
+    padding-top: 30px;
 }
 
 .header-background {
@@ -111,9 +112,11 @@ nav div img {
     max-width: 50%;
     margin-left: 70px;
 }
+
 .header-content h1 {
     font-size: 2.5em !important;
 }
+
 .header-content p {
     font-size: 1.5em !important;
 }
@@ -126,7 +129,8 @@ section {
 
 #profil {
     margin-top: 0;
-    background-color: #f0f4c3; /* Hijau terang */
+    background-color: #f0f4c3;
+    /* Hijau terang */
     min-height: 60%;
 }
 
@@ -236,11 +240,14 @@ section {
     text-align: center;
     transition:
         background-color 0.3s,
-        border-color 0.3s; /* Tambahkan transisi untuk efek hover */
+        border-color 0.3s;
+    /* Tambahkan transisi untuk efek hover */
 }
+
 .card-icon {
     justify-content: center;
 }
+
 .card-icon img {
     width: 100px;
     height: 100px;
@@ -258,16 +265,21 @@ section {
 }
 
 .card:hover {
-    background-color: #d4edda; /* Warna hijau muda */
-    border-color: #c3e6cb; /* Warna hijau lebih tua untuk border */
+    background-color: #d4edda;
+    /* Warna hijau muda */
+    border-color: #c3e6cb;
+    /* Warna hijau lebih tua untuk border */
 }
 
 .card:active {
-    background-color: #c3e6cb; /* Warna hijau lebih tua */
-    border-color: #a1d1a7; /* Warna hijau lebih tua lagi untuk border */
+    background-color: #c3e6cb;
+    /* Warna hijau lebih tua */
+    border-color: #a1d1a7;
+    /* Warna hijau lebih tua lagi untuk border */
     transition:
         background-color 0.1s,
-        border-color 0.1s; /* Animasi transisi lebih cepat */
+        border-color 0.1s;
+    /* Animasi transisi lebih cepat */
 }
 
 /* Gaya untuk Alumni */
@@ -280,19 +292,19 @@ section {
 }
 
 .alumni-card {
-    background-color: rgba(
-        255,
-        255,
-        255,
-        0.8
-    ); /* Transparansi agar teks lebih mudah dibaca */
+    background-color: rgba(255,
+            255,
+            255,
+            0.8);
+    /* Transparansi agar teks lebih mudah dibaca */
     padding: 20px;
     margin: 20px auto;
     width: 80%;
     max-width: 500px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    text-align: left; /* Untuk menyelaraskan teks di kiri */
+    text-align: left;
+    /* Untuk menyelaraskan teks di kiri */
 }
 
 .alumni-name {
@@ -426,6 +438,7 @@ section {
 .footer-social {
     text-align: left;
 }
+
 .footer-map {
     margin: 0 !important;
     display: flex;
@@ -433,6 +446,7 @@ section {
     justify-content: start;
     align-items: start;
 }
+
 .footer-social .social-icon {
     font-size: 50px;
     color: #ff9800;
@@ -467,48 +481,50 @@ section {
 
 /* view mobail */
 @media only screen and (max-width: 768px) {
-  /* navbar */
-  nav {
-  flex-wrap: wrap;
-  background-color: white;
-  border-radius: 40px;
-  width: 85%;
-  height: auto;
-  margin: 20px auto;
-  }
 
-nav div img {
-    width: 40px;
-    height: 40px;
-    border-radius: 50px;
-}
+    /* navbar */
+    nav {
+        flex-wrap: wrap;
+        background-color: white;
+        border-radius: 40px;
+        width: 85%;
+        height: auto;
+        margin: 20px auto;
+    }
 
-  nav ul {
-    flex-direction: column;
-    width: 100%;
-  }
+    nav div img {
+        width: 40px;
+        height: 40px;
+        border-radius: 50px;
+    }
 
-  nav ul li:last-of-type {
-    padding-bottom: 8px;
-  }
+    nav ul {
+        flex-direction: column;
+        width: 100%;
+    }
 
-  nav ul.hidden {
-    display: none;
-  }
+    nav ul li:last-of-type {
+        padding-bottom: 8px;
+    }
 
-  .menu-icon {
-    display: flex;
-    align-items: center;
-    font-size: 30px;
-  }
-  .navbar-collapse {
+    nav ul.hidden {
+        display: none;
+    }
+
+    .menu-icon {
+        display: flex;
+        align-items: center;
+        font-size: 30px;
+    }
+
+    .navbar-collapse {
         position: absolute;
         right: 25px;
         top: 10px;
     }
-    
+
     /* header */
-        #header {
+    #header {
         flex-direction: column;
         text-align: center;
         padding-top: 0;
@@ -518,18 +534,21 @@ nav div img {
 
     .header-content {
         max-width: 100%;
-        margin-bottom: 0.5rem; /* Kurangi jarak margin bawah */
+        margin-bottom: 0.5rem;
+        /* Kurangi jarak margin bawah */
         margin: 0;
     }
 
     .header-content h1 {
-        margin-bottom: 0.5rem; /* Kurangi jarak margin bawah */
+        margin-bottom: 0.5rem;
+        /* Kurangi jarak margin bawah */
     }
 
     .header-content p {
-        margin-bottom: 0.5rem; /* Kurangi jarak margin bawah */
+        margin-bottom: 0.5rem;
+        /* Kurangi jarak margin bawah */
     }
-    
+
     /* profile */
     .profil-teks h2 {
         font-weight: 500;
@@ -557,7 +576,8 @@ nav div img {
     .container-profil {
         flex-direction: column;
         text-align: center;
-        padding-top: 0; /* Menyesuaikan tinggi navbar */
+        padding-top: 0;
+        /* Menyesuaikan tinggi navbar */
     }
 
     .container-profil img {
@@ -582,8 +602,8 @@ nav div img {
         margin: 20px 0;
         border-right: 0;
     }
-    
-/* contain card */
+
+    /* contain card */
     .icon-cards {
         flex-direction: column;
         align-items: center;
@@ -592,15 +612,16 @@ nav div img {
     .card {
         width: 90%;
     }
-    
+
     .alumni-card,
     .news-card {
         width: 90%;
     }
-    
+
     .footer-social .social-icon {
         font-size: 30px;
     }
+
     .footer-container {
         flex-direction: column;
         text-align: center;
@@ -619,6 +640,7 @@ nav div img {
     #judulHeader {
         font-size: 2.5em !important;
     }
+
     #deskHeader {
         font-size: 1em !important;
     }
