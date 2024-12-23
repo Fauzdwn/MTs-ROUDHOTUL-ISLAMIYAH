@@ -147,7 +147,7 @@ document.querySelector(".sign-up-form").addEventListener("submit", (e) => {
     var user = document.getElementById("form-u-login").value; // Username
     var pw = document.getElementById("form-p-login").value; // Password
     var forgot = document.getElementById("forgot");
-    var email = document.getElementById("form-e").value;
+    var email = document.getElementById("reset-mail").value;
     
     // sistem reset Password
     forgot.onClik = () => {
