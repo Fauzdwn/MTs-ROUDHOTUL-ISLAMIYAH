@@ -15,7 +15,7 @@
       <div class="forms-container">
         <div class="signin-signup">
           <!-- login-form -->
-          <form action="#" class="sign-in-form">
+         <form action="#" class="sign-in-form">
             <h2 class="title">Sign in</h2>
             <div class="input-field">
               <i class="fas fa-user"></i>
@@ -26,9 +26,28 @@
               <input type="password" placeholder="Password" id="form-p-login" required="" />
             </div>
             <input type="submit" value="Login" class="btn solid" />
-           <a class="text-darkyellow" href="#"><small>Forgot your password?</small></a>
+
+<!-- Tombol untuk membuka modal -->
+<a class="text-darkyellow" href="#" id="forgot-password-btn"><small>Forgot your password?</small></a>
+
+           <!-- Modal reset-->
+<div id="reset-password-modal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h2>Reset Password</h2>
+    <form id="reset-password-form">
+      <div class="input-field">
+        <i class="fas fa-envelope"></i>
+        <input type="email" placeholder="Enter your email" id="reset-email" required />
+      </div>
+      <button type="submit" class="btn" id="forgot">Submit</button>
+    </form>
+  </div>
+</div>
+
            <p class="margin-t text-whitesmoke"><small> MTS Roudhotul Islamiyah &copy; 2024</small> </p>
-          </form>
+           </form>
+          
           <!-- register-form -->
           <form action="#" class="sign-up-form">
             <h2 class="title">Sign up</h2>
@@ -47,7 +66,7 @@
             <button type="submit" class="btn">Register</button>
             <p class="margin-t text-whitesmoke"><small> MTS Roudhotul Islamiyah &copy; 2024</small> </p>
           </form>
-        </div>
+        </d>
       </div>
 
       <div class="panels-container">
