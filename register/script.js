@@ -28,7 +28,8 @@ document.querySelector(".sign-up-form").addEventListener("submit", (e) => {
 
   // Simpan ke Firebase Authentication
   fetch(
-    "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyDS4s-wVugqVY9lJMFLjNcVF7g1PeVsavg",
+   // !hapus ini hapus biar aman soalnya
+    "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=hapusini-AIzaSyDS4s-wVugqVY9lJMFLjNcVF7g1PeVsavg",
     {
       method: "POST",
       headers: {
