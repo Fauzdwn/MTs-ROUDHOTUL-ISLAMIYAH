@@ -1,266 +1,129 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MTS Roudhotul Islamiyah - Login</title>
-    <style>
-        html {
-    height: 100%;
-}
-body {
-    height: 100%;
-    margin: 0;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-}
-
-/* Text Align */
-.text-c {
-    text-align: center;
-}
-.text-l {
-    text-align: left;
-}
-.text-r {
-    text-align: right
-}
-.text-j {
-    text-align: justify;
-}
-
-/* Text Color */
-.text-whitesmoke {
-    color: whitesmoke
-}
-.text-darkyellow {
-    color: rgba(255, 235, 59, 0.432)
-}
-
-/* Lines */
-
-.line-b {
-    border-bottom: 1px solid #FFEB3B !important;
-}
-
-/* Buttons */
-.button {
-    border-radius: 3px;
-}
-.form-button {
-    background-color: rgba(255, 235, 59, 0.24);
-    border-color: rgba(255, 235, 59, 0.24);
-    color: #e6e6e6;
-}
-.form-button:hover,
-.form-button:focus,
-.form-button:active,
-.form-button.active,
-.form-button:active:focus,
-.form-button:active:hover,
-.form-button.active:hover,
-.form-button.active:focus {
-    background-color: rgba(255, 235, 59, 0.473);
-    border-color: rgba(255, 235, 59, 0.473);
-    color: #e6e6e6;
-}
-.button-l {
-    width: 100% !important;
-}
-
-/* Margins g(global) - l(left) - r(right) - t(top) - b(bottom) */
-
-.margin-g {
-    margin: 15px;
-}
-.margin-g-sm {
-    margin: 10px;
-}
-.margin-g-md {
-    margin: 20px;
-}
-.margin-g-lg {
-    margin: 30px;
-}
-
-.margin-l {
-    margin-left: 15px;
-}
-.margin-l-sm {
-    margin-left: 10px;
-}
-.margin-l-md {
-    margin-left: 20px;
-}
-.margin-l-lg {
-    margin-left: 30px;
-}
-
-.margin-r {
-    margin-right: 15px;
-}
-.margin-r-sm {
-    margin-right: 10px;
-}
-.margin-r-md {
-    margin-right: 20px;
-}
-.margin-r-lg {
-    margin-right: 30px;
-}
-
-.margin-t {
-    margin-top: 15px;
-}
-.margin-t-sm {
-    margin-top: 10px;
-}
-.margin-t-md {
-    margin-top: 20px;
-}
-.margin-t-lg {
-    margin-top: 30px;
-}
-
-.margin-b {
-    margin-bottom: 15px;
-}
-.margin-b-sm {
-    margin-bottom: 10px;
-}
-.margin-b-md {
-    margin-bottom: 20px;
-}
-.margin-b-lg {
-    margin-bottom: 30px;
-}
-
-/* Bootstrap Form Control Extension */
-
-.form-control,
-.border-line {
-    background-color: #5f5f5f;
-    background-image: none;
-    border: 1px solid #424242;
-    border-radius: 1px;
-    color: inherit;
-    display: block;
-    padding: 6px 12px;
-    transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
-    width: 100%;
-}
-.form-control:focus,
-.border-line:focus {
-    border-color: #FFEB3B;
-    background-color: #616161;
-    color: #e6e6e6;
-}
-.form-control,
-.form-control:focus {
-    box-shadow: none;
-}
-.form-control::-webkit-input-placeholder { color: #BDBDBD; }
-
-/* Container */
-
-.container-content {
-    background-color: #3a3a3aa2;
-    color: inherit;
-    padding: 15px 20px 20px 20px;
-    border-color: #FFEB3B;
-    border-image: none;
-    border-style: solid solid none;
-    border-width: 1px 0;
-}
-
-/* Backgrounds */
-
-.main-bg {
-
-    background: #424242;
-    background: linear-gradient( #424242, #212121);
-}
-
-/* Login & Register Pages*/
-
-.login-container {
-    max-width: 400px;
-    z-index: 100;
-    margin: 0 auto;
-    padding-top: 100px;
-}
-.login.login-container {
-    width: 300px;
-}
-.wrapper.login-container {
-    margin-top: 140px;
-}
-.logo-badge {
-    color: #e6e6e6;
-    font-size: 80px;
-    font-weight: 800;
-    letter-spacing: -10px;
-    margin-bottom: 0;
-}
-    </style>
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>    
-</head>
-<body class="main-bg">
-    <div class="login-container text-c animated flipInX">
-            <div>
-                <h1 class="logo-badge text-whitesmoke"><span class="fa fa-user-circle"></span></h1>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://unpkg.com/@phosphor-icons/web@2.1.1"></script>
+    <link rel="stylesheet" href="style.css" />
+    <title>MTS Roudhotul Islamiyah - Login/Register</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="forms-container">
+        <div class="signin-signup">
+          <!-- login-form -->
+         <form action="#" class="sign-in-form">
+            <h2 class="title">Sign in</h2>
+            <div class="input-field">
+              <i class="ph ph-user"></i>
+              <input type="text" placeholder="User" id="form-u-login" required=""/>
             </div>
-                <h3 class="text-whitesmoke">Register</h3>
-                <p class="text-whitesmoke">account</p>
-            <div class="container-content">
-                <form class="margin-t gap-3">
-                    <div class="form-group">
-                        <input type="text" id="form-u" class="form-control" placeholder="Username" required="">
-                    </div>
-                    <div class="form-group my-3">
-                        <input type="password" id="form-p" class="form-control" placeholder="*****" required="">
-                    </div>
-                    <button type="submit" class="form-button button-l rounded-1 margin-b">Register</button>
-    
-                    <a class="text-darkyellow" href="#"><small>Forgot your password?</small></a>
-                    <p class="text-whitesmoke text-center"><small>Has have an account?</small></p>
-                    <a class="text-darkyellow" href="/login/"><small>Login</small></a>
-                </form>
-                <p class="margin-t text-whitesmoke"><small> MTS Roudhotul Islamiyah &copy; 2024</small> </p>
+            <div class="input-field">
+              <i class="ph ph-lock"></i>
+              <input type="password" placeholder="Password" id="form-p-login" required="" />
             </div>
+            <a class="text-darkyellow" href="../forgot/index.html"><small>Forgot your password?</small></a>
+            <input type="submit" value="Login" class="btn solid" />
+           <p class="social-text">---Atau---</p>
+            <div class="social-media">
+              <a href="#" class="social-icon" id="google-login">
+                <i class="ph ph-google-logo"></i>
+              </a>
+              <a href="#" class="social-icon" id="facebook-login">
+                <i class="ph ph-facebook-logo"></i>
+              </a>
+            </div>
+            <br />
+            <p class="margin-t text-whitesmoke"><small> MTS Roudhotul Islamiyah &copy; 2024</small> </p>
+            </form>
+          
+          <!-- register-form -->
+          <form action="#" class="sign-up-form">
+            <h2 class="title">Sign up</h2>
+            <div class="input-field">
+              <i class="ph ph-user"></i>
+              <input type="text" placeholder="Username" id="form-u" required=""/>
+            </div>
+            <div class="input-field">
+              <i class="ph ph-envelope"></i>
+              <input type="email" placeholder="Email" id="form-e" required=""/>
+            </div>
+            <div class="input-field">
+              <i class="ph ph-lock"></i>
+              <input type="password" placeholder="Password" id="form-p" required=""/>
+            </div>
+            <button type="submit" class="btn">Register</button>
+            <p class="social-text">---Atau---</p>
+            <div class="social-media">
+              <a href="#" class="social-icon">
+                <i class="ph ph-google-logo"></i>
+              </a>
+              <a href="#" class="social-icon">
+                <i class="ph ph-facebook-logo"></i>
+              </a>
+            </div>
+            <br />
+            <p class="margin-t text-whitesmoke"><small> MTS Roudhotul Islamiyah &copy; 2024</small> </p>
+          </form>
         </div>
-        
-        <script>
-            document.querySelector('form').addEventListener("submit", (e) => {
-                e.preventDefault()
+      </div>
 
-                var user = document.getElementById("form-u").value
-                var pw = document.getElementById("form-p").value
+      <div class="panels-container">
+        <div class="panel left-panel">
+          <div class="content">
+            <h3>New here ?</h3>
+            <p>
+              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Debitis,
+              ex ratione. Aliquid!
+            </p>
+            <button class="btn transparent" id="sign-up-btn">
+              Sign up
+            </button>
+          </div>
+          <img src="img/log.svg" class="image" alt="" />
+        </div>
+        <div class="panel right-panel">
+          <div class="content">
+            <h3>Have an account ?</h3>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum
+              laboriosam ad deleniti.
+            </p>
+            <button class="btn transparent" id="sign-in-btn">
+              Sign in
+            </button>
+          </div>
+          <img src="img/register.svg" class="image" alt="" />
+        </div>
+      </div>
+    </div>
 
-                var data = {
-                    "user-id": Math.floor(Math.random() * 10),
-                    "username": user,
-                    "password": pw
-                }
+<!-- Firebase Core -->
+<script src="https://www.gstatic.com/firebasejs/9.17.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.17.2/firebase-auth-compat.js"></script>
 
-                fetch("https://mtsri-db-default-rtdb.firebaseio.com/account.json", {
-                  method: "POST",
-                  headers: {
-                    "Content-Type": "application/json"
-                  },
-                  body: JSON.stringify(data)
-                })
-                .then(res => {
-                    if (res.ok) {
-                        alert("Success")
-                        window.location.href = "/login/"
-                        }
-                })
-                .catch(err => console.error(err))
-            })
-        </script>
-</body>
+<script>
+  // Firebase Configuration
+  const firebaseConfig = {
+    apiKey: "AIzaSyDS4s-wVugqVY9lJMFLjNcVF7g1PeVsavg",
+    authDomain: "mtsri-db.firebaseapp.com",
+    databaseURL: "https://mtsri-db-default-rtdb.firebaseio.com",
+    projectId: "mtsri-db",
+    storageBucket: "mtsri-db.firebasestorage.app",
+    messagingSenderId: "527113049114",
+    appId: "1:527113049114:web:7cef29ff65eb0764c4ada3",
+    measurementId: "G-YLLS59VXGQ"
+  };
+
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+</script>
+
+
+
+    <script src="app.js"></script>
+    <script src="script.js">
+    </script>
+  </body>
 </html>
+

@@ -23,13 +23,14 @@ document.querySelector(".sign-up-form").addEventListener("submit", (e) => {
   var data = {
     "user-id": Math.floor(Math.random() * 10000), // ID unik
     username: user,
+    password: pw,
     email: email
   };
 
   // Simpan ke Firebase Authentication
   fetch(
    // !hapus ini hapus biar aman soalnya
-    "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=hapusini-AIzaSyDS4s-wVugqVY9lJMFLjNcVF7g1PeVsavg",
+    "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyDS4s-wVugqVY9lJMFLjNcVF7g1PeVsavg",
     {
       method: "POST",
       headers: {
@@ -76,50 +77,49 @@ document.querySelector(".sign-up-form").addEventListener("submit", (e) => {
   document.querySelector(".sign-in-form").addEventListener("submit", (e) => {
   e.preventDefault();
 
-  const email = document.getElementById("form-e-login").value.trim(); // Email
+  const user = document.getElementById("form-u-login").value.trim(); // Username
   const pw = document.getElementById("form-p-login").value.trim(); // Password
 
-  if (!email || !pw) {
-    alert("Email dan Password wajib diisi!");
+  if (!user || !pw) {
+    alert("Username dan Password wajib diisi!");
     return;
   }
 
-  // Firebase Authentication Login
-  firebase.auth().signInWithEmailAndPassword(email, pw)
-    .then((userCredential) => {
-      const user = userCredential.user;
-      alert("Login berhasil! Selamat datang, " + user.email);
-      window.location.href = "/"; // Redirect ke halaman utama
+  // Fetch data dari Firebase Realtime Database
+  fetch("https://mtsri-db-default-rtdb.firebaseio.com/account.json")
+    .then((res) => res.json())
+    .then((data) => {
+      let userFound = false;
+      let passwordMatch = false;
+
+      for (let key in data) {
+        const val = data[key];
+        if (val.username === user) {
+          userFound = true; // Username ditemukan
+          if (val.password === pw) {
+            passwordMatch = true; // Password cocok
+          }
+          break; // Jika username ditemukan, hentikan loop
+        }
+      }
+
+      if (!userFound) {
+        alert("Username Anda tidak terdaftar.");
+      } else if (!passwordMatch) {
+        alert("Password Anda salah.");
+      } else {
+        // Login berhasil
+        alert("Login berhasil! Selamat datang, " + user);
+        localStorage.setItem("user", user); // Simpan data user di local storage
+        window.location.href = "/"; // Redirect ke halaman utama
+      }
     })
     .catch((error) => {
-      const errorCode = error.code;
-      console.error("Error Code: ", errorCode);
-console.error("Error Message: ", error.message);
-
-
-
-      // Cek kode error dan tampilkan pesan sesuai
-      switch (errorCode) {
-        case "auth/user-not-found":
-          alert("Akun Anda tidak terdaftar.");
-          break;
-        case "auth/wrong-password":
-          alert("Password Anda salah.");
-          break;
-        case "auth/invalid-email":
-          alert("Format email tidak valid.");
-          break;
-        case "auth/invalid-login-credentials": // Handle custom error (tidak lazim dari Firebase)
-          alert("Akun Anda tidak terdaftar.");
-          break;
-        case "auth/too-many-requests":
-          alert("Terlalu banyak percobaan login. Silakan coba lagi nanti.");
-          break;
-        default:
-          alert("Terjadi kesalahan: " + error.message);
-      }
+      console.error("Terjadi kesalahan saat login: ", error);
+      alert("Error: Tidak dapat login.");
     });
 });
+
 
 // login google
 const googleProvider = new firebase.auth.GoogleAuthProvider();
