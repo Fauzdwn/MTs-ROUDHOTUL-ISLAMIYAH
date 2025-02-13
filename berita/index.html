@@ -1,158 +1,107 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="assets/logo2.jpg" type="image/x-icon" />
-    <title>MTs Roudhotul Islamiyah - Berita</title>
-    <link rel="stylesheet" href="../public/style.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <title>Semua Berita</title>
+  <style>
+    .card {
+      border: 1px solid #ddd;
+      padding: 15px;
+      margin: 10px;
+      border-radius: 5px;
+    }
+    .card img {
+      max-width: 100%;
+    }
+  </style>
 </head>
 <body>
-    <!--     Loading animation -->
-    <div id="loading-overlay" class="loading-overlay">
-        <div class="spinner"></div>
-    </div>
+  <h1>Semua Berita</h1>
+  <div id="all-news-container"></div>
 
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg shadow-lg bg-light">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#"><img src="https://i.ibb.co.com/865JWCz/logos-1-removebg-preview.png" style="width:50px;" alt="" id="logo"></a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="bi bi-list"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="../index.html">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="../profile/index.html">Profile</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="#">Berita</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="galeri/index.html">Galeri</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="contact/index.html">Contact</a>
-                    </li>
-                    <li class="nav-item login-false">
-                        <button class="nav-link btn bg-primary rounded-1 text-light px-3" onclick="window.location.href = '/login/index.html'">Login/register</button>
-                    </li>
-                    <li class="nav-item login-true">
-                        <button class="nav-link btn bg-danger rounded-1 text-light px-3" onclick="logout()">Logout</button>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+  <!-- Sertakan Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-database-compat.js"></script>
+  
+  <script>
+    // Konfigurasi Firebase (sesuaikan dengan project Anda)
+    const firebaseConfig = {
+      apiKey: "AIzaSyDS4s-wVugqVY9lJMFLjNcVF7g1PeVsavg",
+      authDomain: "mtsri-db.firebaseapp.com",
+      databaseURL: "https://mtsri-db-default-rtdb.firebaseio.com",
+      projectId: "mtsri-db",
+      storageBucket: "mtsri-db.firebasestorage.app",
+      messagingSenderId: "527113049114",
+      appId: "1:527113049114:web:7cef29ff65eb0764c4ada3",
+      measurementId: "G-YLLS59VXGQ"
+    };
 
-    <!-- Header Berita -->
-    <header id="header">
-        <div class="header-background"></div>
-        <div class="header-content container w-100 vh-100 justify-content-center text-light d-flex flex-column align-items-center">
-            <h1 id="judulHeader" class="text-uppercase m-0 fw-bold text-center">Berita MTs Roudhotul Islamiyah</h1>
-            <p id="sloganHeader" style="color:#3498db" class="m-0 fw-bold">
-                Berita terbaru dari kamai akan ada di sini
-            </p>
-        </div>
-    </header>
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.database();
+    const allNewsContainer = document.getElementById("all-news-container");
 
-    <main id="body-berita">
-        <!-- Section Berita -->
-        <section class="container-news">
-            <h2>Berita Terbaru</h2>
-            <div class="d-flex justify-content-center gap-3 flex-wrap" id="list-berita">
-                <!-- Contoh artikel berita -->
-                <div class="card mb-3" style="max-width: 540px;">
-                    <div class="row g-0">
-                        <div class="col-md-4">
-                            <img src="public/images/berita1.jpg" class="img-fluid rounded-start" alt="Berita 1">
-                        </div>
-                        <div class="col-md-8">
-                            <div class="card-body">
-                                <h5 class="card-title">Judul Berita 1</h5>
-                                <p class="card-text">Deskripsi singkat berita 1 yang akan menarik minat pembaca untuk membaca lebih lanjut...</p>
-                                <p class="card-text"><small class="text-muted">Tanggal: 01 Oktober 2024</small></p>
-                                <a href="berita1.html" class="btn btn-primary">Baca Selengkapnya</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+    db.ref("berita").once("value").then(snapshot => {
+      const data = snapshot.val();
+      let allNews = [];
 
-                <div class="card mb-3" style="max-width: 540px;">
-                    <div class="row g-0">
-                        <div class="col-md-4">
-                            <img src="public/images/berita2.jpg" class="img-fluid rounded-start" alt="Berita 2">
-                        </div>
-                        <div class="col-md-8">
-                            <div class="card-body">
-                                <h5 class="card-title">Judul Berita 2</h5>
-                                <p class="card-text">Deskripsi singkat berita 2 mengenai acara atau informasi penting di sekolah...</p>
-                                <p class="card-text"><small class="text-muted">Tanggal: 28 September 2024</small></p>
-                                <a href="berita2.html" class="btn btn-primary">Baca Selengkapnya</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <button class="load-more">Selengkapnya</button>
-        </section>
-    </main>
+      // Konversi data ke dalam array
+      for (let key in data) {
+        let berita = data[key];
+        berita._key = key;  // Simpan key jika diperlukan
+        allNews.push(berita);
+      }
 
-    <!-- Footer -->
-    <footer class="footer px-3" id="footer">
-        <div class="footer-container gap-3">
-            <div class="footer-logo">
-                <img src="https://i.ibb.co.com/865JWCz/logos-1-removebg-preview.png" alt="Logo" id="img-footer">
-                <h4>MTs Roudhotul Islamiyah</h4>
-                <p id="desk-footer">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci consequuntur illo consequatur, ullam mollitia maxime aliquam non dolores in facere.
-                </p>
-            </div>
-            <div class="footer-map">
-            </div>
-            <div class="footer-info">
-                <h4 class="text-left">Lokasi Kami</h4>
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1212.3414307019912!2d100.10863901528386!3d1.9587611837145043!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x302d113a4a9be85f%3A0xa7618ed48af8513f!2sMTs%20Roudhotul%20Islamiyah%20Kebun%20dan%20Pks%20Sisumut!5e1!3m2!1sid!2sid!4v1720619573836!5m2!1sid!2sid" class="responsive-map" style="margin: 15px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                <p>
-                    Yayasan Pendidikan MTs Roudhotul Islamiyah terletak di
-                    Jl. Mesjid Nurul Iman Emplasmen Sisumut, kec.Kota Pinang, kab.Labuhan Batu Selatan.
-                </p>
-            </div>
-            <div class="footer-contact pb-2">
-                <h4>Kontak</h4>
-            <div class="footer-social">
-                <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
-                <a href="https://www.facebook.com/profile.php?id=100064166644323" class="social-icon"><i class="fab fa-facebook"></i></a>
-                <a href="#" class="social-icon"><i class="fab fa-telegram"></i></a>
-                <a href="#" class="social-icon"><i class="fab fa-whatsapp"></i></a>
-            </div>
-                <p>
-                    <i class="fas fa-map-marker-alt"></i> Alamat: Jl. Mesjid Nurul Iman Emplasmen Sisumut, kec.Kota Pinang, kab.Labuhan Batu Selatan.
-                </p>
-                <p>
-                    <i class="fas fa-phone-alt"></i> Telepon: (0298) 3429395
-                </p>
-                <p>
-                    <i class="fas fa-envelope"></i> Email: ypisabkho@gmail.com
-                </p>
-            </div>
-        </div>
-        <div class="footer-bottom py-3">
-            <p class="m-0">
-                Copyright by @MTs Roudhotul Islamiyah
-            </p>
-            <p>
-                
-            </p>
-        </div>
-    </footer>
-<!--         <script src="../public/script.js"></script> -->
+      // Sorting berita:
+      // 1. Berita dengan status "draft" ditempatkan di atas.
+      // 2. Jika kedua berita memiliki status yang sama, urutkan berdasarkan createdAt secara descending (berita terbaru di atas).
+      allNews.sort((a, b) => {
+        if (a.status === "draft" && b.status !== "draft") return -1;
+        if (a.status !== "draft" && b.status === "draft") return 1;
+        if (a.createdAt > b.createdAt) return -1;
+        if (a.createdAt < b.createdAt) return 1;
+        return 0;
+      });
+
+      // Tampilkan seluruh berita
+      allNews.forEach(berita => {
+        const card = document.createElement("div");
+        card.className = "card";
+
+        // Tampilkan banner jika ada
+        if (berita.banner) {
+          const img = document.createElement("img");
+          img.src = berita.banner;
+          card.appendChild(img);
+        }
+
+        // Tampilkan judul berita
+        const title = document.createElement("h2");
+        title.textContent = berita.titleBerita;
+        card.appendChild(title);
+
+        // Tampilkan informasi status, pembuat, dan waktu pembuatan
+        const info = document.createElement("p");
+info.textContent = `Dibuat oleh ${berita.createdBy} pada ${berita.createdAt}`;
+card.appendChild(info);
+
+// Jika berita sudah di-edit, tampilkan tulisan "diedit" di bawahnya:
+if (berita.edit && berita.edit === "iya") {
+  const editedLabel = document.createElement("p");
+  editedLabel.style.fontStyle = "italic";
+  editedLabel.style.fontSize = "0.9em";
+  editedLabel.textContent = "diedit";
+  card.appendChild(editedLabel);
+}
+
+        // Buat link menuju halaman detail berita
+        const link = document.createElement("a");
+        link.href = `detail.html?id=${berita.idBerita}`;
+        link.textContent = "Baca Selengkapnya";
+        card.appendChild(link);
+
+        allNewsContainer.appendChild(card);
+      });
+    });
+  </script>
 </body>
 </html>

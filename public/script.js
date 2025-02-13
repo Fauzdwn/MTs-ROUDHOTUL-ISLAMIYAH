@@ -41,28 +41,89 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         })
         .catch(error => console.error("Error fetching data:", error));
+        
     // fetch berita
+    const draftContainer = document.getElementById("draft-container");
     fetch(db + "berita.json")
-        .then(response => response.json())
-        .then(data => {
-            for (let key in data) {
-                var val = data[key];
-                var newElement = document.createElement("div")
-                newElement.classList.add("news-card")
-                newElement.addEventListener("click", () => {
-                  window.location.href = "/berita/" + val.idBerita
-                })
-                newElement.innerHTML = `
-                <img src="${val.banner}" class="w-100 mb-2 rounded-1" alt="">
-                <h3>${val.titleBerita}</h3>
-                <p>
-                    Baca Detail
-                </p>
-                `
-                document.getElementById("body-berita").appendChild(newElement)
-            }
+  .then(response => response.json())
+  .then(data => {
+    let drafts = [];
+
+    // Filter berita dengan status "draft"
+    for (let key in data) {
+      let berita = data[key];
+      if (berita.status === "draft") {
+        // Simpan key agar nantinya bisa digunakan untuk update
+        berita._key = key;
+        drafts.push(berita);
+      }
+    }
+
+    // Urutkan berita draft berdasarkan createdAt secara descending (berita terbaru di atas)
+    drafts.sort((a, b) => {
+      if (a.createdAt > b.createdAt) return -1;
+      if (a.createdAt < b.createdAt) return 1;
+      return 0;
+    });
+
+    // Jika ada lebih dari 3 berita draft, update berita yang lebih lama menjadi status "aktif"
+    if (drafts.length > 3) {
+      for (let i = 3; i < drafts.length; i++) {
+        let beritaToUpdate = drafts[i];
+        fetch(dbURL + "berita/" + beritaToUpdate._key + ".json", {
+          method: "PATCH",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ status: "aktif" })
         })
-        .catch(error => console.error("Error fetching data:", error));
+        .then(res => res.json())
+        .then(result => {
+          console.log(`Status berita ${beritaToUpdate._key} diupdate menjadi aktif.`, result);
+        })
+        .catch(err => console.error("Error updating data:", err));
+      }
+      // Hanya ambil 3 berita draft terbaru untuk ditampilkan
+      drafts = drafts.slice(0, 3);
+    }
+
+    // Tampilkan berita draft di halaman
+    drafts.forEach(berita => {
+      const card = document.createElement("div");
+      card.className = "card";
+
+      // Tampilkan banner
+      const img = document.createElement("img");
+      img.src = berita.banner;
+      card.appendChild(img);
+
+      // Tampilkan judul berita
+      const title = document.createElement("h2");
+      title.textContent = berita.titleBerita;
+      card.appendChild(title);
+
+      // Tampilkan informasi pembuat dan waktu
+      const info = document.createElement("p");
+      info.textContent = `👤 ${berita.createdBy}  🕒 ${berita.createdAt}`;
+      card.appendChild(info);
+
+      // Jika berita sudah diedit, tampilkan label "diedit"
+      if (berita.edit && berita.edit === "iya") {
+        const editedLabel = document.createElement("p");
+        editedLabel.style.fontStyle = "italic";
+        editedLabel.style.fontSize = "0.9em";
+        editedLabel.textContent = "diedit";
+        card.appendChild(editedLabel);
+      }
+
+      // Link menuju halaman detail berita
+      const link = document.createElement("a");
+      link.href = `../berita/detail.html?id=${berita.idBerita}`;
+      link.textContent = "Baca Selengkapnya";
+      card.appendChild(link);
+
+      draftContainer.appendChild(card);
+    });
+  })
+  .catch(error => console.error("Error fetching data:", error));
 });
 
 var isLogin = localStorage.getItem("user");

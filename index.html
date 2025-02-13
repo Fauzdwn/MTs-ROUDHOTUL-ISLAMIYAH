@@ -34,7 +34,7 @@
                 <a href="#">Profile</a>
             </li>
             <li>
-                <a href="#">Berita</a>
+                <a href="berita/index.html">Berita</a>
             </li>
             <li>
                 <a href="#">Galeri</a>
@@ -241,9 +241,9 @@
         <!-- Section Berita Terbaru -->
         <section class="container-news" id="Berita">
             <h2>Berita Terbaru</h2>
-            <div class="d-flex justify-content-center gap-3 flex-wrap" id="body-berita">
+            <div class="d-flex justify-content-center gap-3 flex-wrap" id="draft-container">
             </div>
-            <button class="load-more" onclick="window.location.href = 'berita/index.html'">Selengkapnya</button>
+            <a href="berita/index.html" class="load-more">Selengkapnya</a>
         </section>
     </main>
     <!-- Footer -->
@@ -301,8 +301,9 @@
             </p>
         </div>
     </footer>
-
+<!-- Sertakan Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-database-compat.js"></script>
     <script src="public/script.js"></script>
 </body>
-
 </html>
