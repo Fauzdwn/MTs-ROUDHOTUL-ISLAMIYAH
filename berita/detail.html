@@ -94,8 +94,43 @@ if (berita.edit && berita.edit === "iya") {
   editedLabel.textContent = "diedit";
   detailDiv.appendChild(editedLabel);
 }
+        // Tampilkan detail berita
+detailContainer.appendChild(detailDiv);
 
-        detailContainer.appendChild(detailDiv);
+// Tambahkan tombol share ke WhatsApp dan tombol salin link
+const shareContainer = document.createElement("div");
+shareContainer.style.marginTop = "20px";
+
+// Tombol untuk share ke WhatsApp
+const waButton = document.createElement("button");
+waButton.textContent = "Share ke WhatsApp";
+waButton.style.marginRight = "10px";
+waButton.addEventListener("click", () => {
+  // Menggunakan API WhatsApp untuk share link
+  const currentURL = window.location.href;
+  const waURL = "https://api.whatsapp.com/send?text=" + encodeURIComponent(currentURL);
+  window.open(waURL, "_blank");
+});
+shareContainer.appendChild(waButton);
+
+// Tombol untuk menyalin link berita
+const copyButton = document.createElement("button");
+copyButton.textContent = "Salin Link";
+copyButton.addEventListener("click", () => {
+  const currentURL = window.location.href;
+  navigator.clipboard.writeText(currentURL)
+    .then(() => {
+      alert("Link telah disalin ke clipboard.");
+    })
+    .catch(err => {
+      alert("Gagal menyalin link: " + err);
+    });
+});
+shareContainer.appendChild(copyButton);
+
+// Tambahkan container tombol share ke detailContainer
+detailContainer.appendChild(shareContainer);
+
 
         // Tampilkan Berita Lainnya (kecuali berita yang sedang ditampilkan)
         showOtherNews(key);
