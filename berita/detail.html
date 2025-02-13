@@ -108,7 +108,7 @@ waButton.style.marginRight = "10px";
 waButton.addEventListener("click", () => {
   // Menggunakan API WhatsApp untuk share link
   const currentURL = window.location.href;
-  const waURL = "https://api.whatsapp.com/send?text=" + encodeURIComponent(currentURL);
+  const waURL = "https://api.whatsapp.com/send?text=Check%20out%20this%20page%3A%0A" + encodeURIComponent(currentURL);
   window.open(waURL, "_blank");
 });
 shareContainer.appendChild(waButton);
