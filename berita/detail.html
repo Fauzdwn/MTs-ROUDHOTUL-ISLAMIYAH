@@ -3,6 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <title>Detail Berita</title>
+  <!-- Open Graph Meta Tags Default -->
+  <meta property="og:title" content="Detail Berita" />
+  <meta property="og:description" content="Deskripsi singkat berita." />
+  <meta property="og:image" content="https://example.com/default-banner.jpg" />
+  <meta property="og:url" content="https://example.com/berita/123" />
+  <meta property="og:type" content="website" />
   <style>
     .card-detail {
       padding: 20px;
@@ -30,169 +36,188 @@
   <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-database-compat.js"></script>
   <script>
-  // Konfigurasi Firebase (sama dengan di index.html)
-  const firebaseConfig = {
-    apiKey: "AIzaSyDS4s-wVugqVY9lJMFLjNcVF7g1PeVsavg",
-    authDomain: "mtsri-db.firebaseapp.com",
-    databaseURL: "https://mtsri-db-default-rtdb.firebaseio.com",
-    projectId: "mtsri-db",
-    storageBucket: "mtsri-db.firebasestorage.app",
-    messagingSenderId: "527113049114",
-    appId: "1:527113049114:web:7cef29ff65eb0764c4ada3",
-    measurementId: "G-YLLS59VXGQ"
-  };
+    // Konfigurasi Firebase
+    const firebaseConfig = {
+      apiKey: "AIzaSyDS4s-wVugqVY9lJMFLjNcVF7g1PeVsavg",
+      authDomain: "mtsri-db.firebaseapp.com",
+      databaseURL: "https://mtsri-db-default-rtdb.firebaseio.com",
+      projectId: "mtsri-db",
+      storageBucket: "mtsri-db.firebasestorage.app",
+      messagingSenderId: "527113049114",
+      appId: "1:527113049114:web:7cef29ff65eb0764c4ada3",
+      measurementId: "G-YLLS59VXGQ"
+    };
 
-  firebase.initializeApp(firebaseConfig);
-  const db = firebase.database();
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.database();
 
-  // 1. Ambil idBerita dari URL
-  const urlParams = new URLSearchParams(window.location.search);
-  const idBerita = urlParams.get('id');  // Misalnya: detail.html?id=308
+    // Ambil idBerita dari URL (misalnya: detail.html?id=308)
+    const urlParams = new URLSearchParams(window.location.search);
+    const idBerita = urlParams.get('id');
 
-  const detailContainer = document.getElementById("detail-container");
-  const otherNewsContainer = document.getElementById("other-news-container");
+    const detailContainer = document.getElementById("detail-container");
+    const otherNewsContainer = document.getElementById("other-news-container");
 
-  // 2. Cari berita berdasarkan field idBerita
-  // Karena struktur database menggunakan key acak, kita gunakan orderByChild untuk mencari
-  const beritaRef = db.ref("berita");
-  beritaRef.orderByChild("idBerita").equalTo(Number(idBerita)).once("value")
-    .then(snapshot => {
-      const data = snapshot.val();
-      if (data) {
-        // Karena hasilnya berupa object dengan satu key, ambil key-nya
-        const key = Object.keys(data)[0];
-        const berita = data[key];
+    // Referensi ke node "berita"
+    const beritaRef = db.ref("berita");
 
-        // Tampilkan detail berita
-        const detailDiv = document.createElement("div");
-        detailDiv.className = "card-detail";
+    // Cari berita berdasarkan field idBerita
+    beritaRef.orderByChild("idBerita").equalTo(Number(idBerita)).once("value")
+      .then(snapshot => {
+        const data = snapshot.val();
+        if (data) {
+          // Karena hasilnya berupa object dengan satu key, ambil key-nya
+          const key = Object.keys(data)[0];
+          const berita = data[key];
 
-        if (berita.banner) {
-          const img = document.createElement("img");
-          img.src = berita.banner;
-          detailDiv.appendChild(img);
+          // Ubah title halaman sesuai judul berita
+          document.title = berita.titleBerita || "Detail Berita";
+
+          // Update meta tag Open Graph agar sesuai dengan berita
+          const ogTitle = document.querySelector("meta[property='og:title']");
+          if (ogTitle) {
+            ogTitle.setAttribute("content", berita.titleBerita);
+          }
+          const ogDescription = document.querySelector("meta[property='og:description']");
+          if (ogDescription) {
+            // Gunakan properti 'deskripsi' atau sebagian isi berita
+            const desc = berita.deskripsi || (berita.isiBerita ? berita.isiBerita.substring(0, 150) : "Deskripsi berita tidak tersedia.");
+            ogDescription.setAttribute("content", desc);
+          }
+          const ogImage = document.querySelector("meta[property='og:image']");
+          if (ogImage) {
+            ogImage.setAttribute("content", berita.banner);
+          }
+          const ogUrl = document.querySelector("meta[property='og:url']");
+          if (ogUrl) {
+            ogUrl.setAttribute("content", window.location.href);
+          }
+
+          // Tampilkan detail berita
+          const detailDiv = document.createElement("div");
+          detailDiv.className = "card-detail";
+
+          if (berita.banner) {
+            const img = document.createElement("img");
+            img.src = berita.banner;
+            detailDiv.appendChild(img);
+          }
+
+          const title = document.createElement("h1");
+          title.textContent = berita.titleBerita;
+          detailDiv.appendChild(title);
+
+          // Tampilkan isi berita (pastikan properti 'isiBerita' ada di database)
+          const contentText = document.createElement("p");
+          contentText.textContent = berita.isiBerita;
+          detailDiv.appendChild(contentText);
+
+          // Tampilkan informasi lain (misalnya createdAt)
+          const createdAt = document.createElement("p");
+          createdAt.textContent = "Dibuat pada: " + berita.createdAt;
+          detailDiv.appendChild(createdAt);
+
+          // Jika berita sudah diedit, tampilkan label "diedit"
+          if (berita.edit && berita.edit === "iya") {
+            const editedLabel = document.createElement("p");
+            editedLabel.style.fontStyle = "italic";
+            editedLabel.style.fontSize = "0.9em";
+            editedLabel.textContent = "diedit";
+            detailDiv.appendChild(editedLabel);
+          }
+
+          // Tambahkan tombol share ke WhatsApp dan tombol salin link
+          const shareContainer = document.createElement("div");
+          shareContainer.style.marginTop = "20px";
+
+          // Tombol untuk share ke WhatsApp
+          const waButton = document.createElement("button");
+          waButton.textContent = "Share ke WhatsApp";
+          waButton.style.marginRight = "10px";
+          waButton.addEventListener("click", () => {
+            const currentURL = window.location.href;
+            const waURL = "https://api.whatsapp.com/send?text=Check%20out%20this%20page%3A%0A" + encodeURIComponent(currentURL);
+            window.open(waURL, "_blank");
+          });
+          shareContainer.appendChild(waButton);
+
+          // Tombol untuk menyalin link berita
+          const copyButton = document.createElement("button");
+          copyButton.textContent = "Salin Link";
+          copyButton.addEventListener("click", () => {
+            const currentURL = window.location.href;
+            navigator.clipboard.writeText(currentURL)
+              .then(() => {
+                alert("Link telah disalin ke clipboard.");
+              })
+              .catch(err => {
+                alert("Gagal menyalin link: " + err);
+              });
+          });
+          shareContainer.appendChild(copyButton);
+
+          detailDiv.appendChild(shareContainer);
+          detailContainer.appendChild(detailDiv);
+
+          // Tampilkan Berita Lainnya (kecuali berita yang sedang ditampilkan)
+          showOtherNews(key);
+        } else {
+          detailContainer.textContent = "Berita tidak ditemukan.";
+        }
+      });
+
+    // Fungsi untuk menampilkan 3 berita lainnya:
+    // 2 berita dengan status 'draft' (terbaru) dan 1 berita dengan status 'aktif' (terbaru)
+    function showOtherNews(currentKey) {
+      beritaRef.once("value").then(snapshot => {
+        const data = snapshot.val();
+        let drafts = [];
+        let aktif = [];
+        
+        // Pisahkan berita berdasarkan status, kecuali berita yang sedang ditampilkan
+        for (let key in data) {
+          if (key === currentKey) continue;
+          let berita = data[key];
+          berita._key = key;
+          if (berita.status === "draft") {
+            drafts.push(berita);
+          } else if (berita.status === "aktif") {
+            aktif.push(berita);
+          }
         }
 
-        const title = document.createElement("h1");
-        title.textContent = berita.titleBerita;
-        detailDiv.appendChild(title);
+        // Urutkan kedua array berdasarkan createdAt secara descending (berita terbaru di atas)
+        drafts.sort((a, b) => (a.createdAt > b.createdAt ? -1 : 1));
+        aktif.sort((a, b) => (a.createdAt > b.createdAt ? -1 : 1));
 
-        // Tampilkan isi berita (pastikan properti ini ada di database, misalnya 'isiBerita')
-        const contentText = document.createElement("p");
-        contentText.textContent = berita.isiBerita;
-        detailDiv.appendChild(contentText);
+        // Ambil maksimal 2 berita draft
+        const selectedDrafts = drafts.slice(0, 2);
+        // Hitung berapa berita aktif yang diperlukan agar total yang ditampilkan menjadi 3
+        const requiredActive = 3 - selectedDrafts.length;
+        const selectedAktif = aktif.slice(0, requiredActive);
 
-        // Tampilkan informasi lain (misalnya createdAt)
-        const createdAt = document.createElement("p");
-        createdAt.textContent = "Dibuat pada: " + berita.createdAt;
-        detailDiv.appendChild(createdAt);
-        // Setelah menampilkan detail berita
-if (berita.edit && berita.edit === "iya") {
-  const editedLabel = document.createElement("p");
-  editedLabel.style.fontStyle = "italic";
-  editedLabel.style.fontSize = "0.9em";
-  editedLabel.textContent = "diedit";
-  detailDiv.appendChild(editedLabel);
-}
-        // Tampilkan detail berita
-detailContainer.appendChild(detailDiv);
+        // Gabungkan kedua array tersebut
+        const selectedNews = selectedDrafts.concat(selectedAktif);
 
-// Tambahkan tombol share ke WhatsApp dan tombol salin link
-const shareContainer = document.createElement("div");
-shareContainer.style.marginTop = "20px";
-
-// Tombol untuk share ke WhatsApp
-const waButton = document.createElement("button");
-waButton.textContent = "Share ke WhatsApp";
-waButton.style.marginRight = "10px";
-waButton.addEventListener("click", () => {
-  // Menggunakan API WhatsApp untuk share link
-  const currentURL = window.location.href;
-  const waURL = "https://api.whatsapp.com/send?text=Check%20out%20this%20page%3A%0A" + encodeURIComponent(currentURL);
-  window.open(waURL, "_blank");
-});
-shareContainer.appendChild(waButton);
-
-// Tombol untuk menyalin link berita
-const copyButton = document.createElement("button");
-copyButton.textContent = "Salin Link";
-copyButton.addEventListener("click", () => {
-  const currentURL = window.location.href;
-  navigator.clipboard.writeText(currentURL)
-    .then(() => {
-      alert("Link telah disalin ke clipboard.");
-    })
-    .catch(err => {
-      alert("Gagal menyalin link: " + err);
-    });
-});
-shareContainer.appendChild(copyButton);
-
-// Tambahkan container tombol share ke detailContainer
-detailContainer.appendChild(shareContainer);
-
-
-        // Tampilkan Berita Lainnya (kecuali berita yang sedang ditampilkan)
-        showOtherNews(key);
-      } else {
-        detailContainer.textContent = "Berita tidak ditemukan.";
-      }
-    });
-
-  // Fungsi untuk menampilkan 3 berita lainnya:
-  // 2 berita dengan status 'draft' (terbaru) dan 1 berita dengan status 'aktif' (terbaru)
-  function showOtherNews(currentKey) {
-  beritaRef.once("value").then(snapshot => {
-    const data = snapshot.val();
-    let drafts = [];
-    let aktif = [];
-    
-    // Pisahkan berita berdasarkan status, kecuali berita yang sedang ditampilkan
-    for (let key in data) {
-      if (key === currentKey) continue;
-      let berita = data[key];
-      berita._key = key;
-      if (berita.status === "draft") {
-        drafts.push(berita);
-      } else if (berita.status === "aktif") {
-        aktif.push(berita);
-      }
+        // Tampilkan berita lainnya
+        otherNewsContainer.innerHTML = "";
+        selectedNews.forEach(berita => {
+          const card = document.createElement("div");
+          card.className = "card";
+          
+          const title = document.createElement("h4");
+          title.textContent = berita.titleBerita;
+          card.appendChild(title);
+          
+          const link = document.createElement("a");
+          link.href = `detail.html?id=${berita.idBerita}`;
+          link.textContent = "Baca Selengkapnya";
+          card.appendChild(link);
+          
+          otherNewsContainer.appendChild(card);
+        });
+      });
     }
-
-    // Urutkan kedua array berdasarkan createdAt secara descending (berita terbaru di atas)
-    drafts.sort((a, b) => (a.createdAt > b.createdAt ? -1 : 1));
-    aktif.sort((a, b) => (a.createdAt > b.createdAt ? -1 : 1));
-
-    // Ambil maksimal 2 berita draft
-    const selectedDrafts = drafts.slice(0, 2);
-    // Hitung berapa berita aktif yang diperlukan agar total yang ditampilkan menjadi 3
-    const requiredActive = 3 - selectedDrafts.length;
-    const selectedAktif = aktif.slice(0, requiredActive);
-
-    // Gabungkan kedua array tersebut
-    const selectedNews = selectedDrafts.concat(selectedAktif);
-
-    // Tampilkan berita lainnya
-    otherNewsContainer.innerHTML = "";
-    selectedNews.forEach(berita => {
-      const card = document.createElement("div");
-      card.className = "card";
-      
-      const title = document.createElement("h4");
-      title.textContent = berita.titleBerita;
-      card.appendChild(title);
-      
-      const link = document.createElement("a");
-      link.href = `detail.html?id=${berita.idBerita}`;  // Pastikan detail.html tersedia untuk menampilkan detail berita
-      link.textContent = "Baca Selengkapnya";
-      card.appendChild(link);
-      
-      otherNewsContainer.appendChild(card);
-    });
-  });
-}
-
-</script>
-
+  </script>
 </body>
 </html>
