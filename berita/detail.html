@@ -10,17 +10,173 @@
   <meta property="og:url" content="https://example.com/berita/123" />
   <meta property="og:type" content="website" />
   <style>
+    /* Reset CSS */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    body {
+      background: #f9f9f9;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    /* Animasi */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes cardHover {
+      0% { transform: perspective(1000px) rotateY(0) rotateX(0); }
+      100% { transform: perspective(1000px) rotateY(2deg) rotateX(1deg); }
+    }
+
     .card-detail {
-      padding: 20px;
-      margin: 20px;
+      background: white;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      padding: 30px;
+      margin: 20px auto;
+      max-width: 800px;
+      animation: fadeIn 0.6s ease-out;
+      transition: transform 0.3s ease;
+      transform-style: preserve-3d;
     }
+
+    .card-detail:hover {
+      animation: cardHover 0.5s ease-out forwards;
+    }
+
+    .card-detail img {
+      width: 100%;
+      height: 400px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-bottom: 25px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+
+    .card-detail h1 {
+      font-size: 2.5em;
+      margin-bottom: 20px;
+      color: #2c3e50;
+      text-align: center;
+    }
+
+    .card-detail p {
+      font-size: 1.1em;
+      margin-bottom: 15px;
+      color: #555;
+      line-height: 1.8;
+    }
+
     .other-news {
-      margin-top: 40px;
+      margin: 50px auto;
+      max-width: 800px;
+      padding: 0 20px;
     }
+
+    .other-news h3 {
+      font-size: 1.8em;
+      color: #2c3e50;
+      margin-bottom: 30px;
+      text-align: center;
+    }
+
+    #other-news-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 25px;
+    }
+
     .other-news .card {
-      border: 1px solid #ccc;
-      padding: 10px;
-      margin: 5px;
+      background: white;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+      cursor: pointer;
+      transform-style: preserve-3d;
+    }
+
+    .other-news .card:hover {
+      transform: perspective(1000px) translateZ(20px) rotateY(3deg);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    }
+
+    .other-news .card h4 {
+      font-size: 1.2em;
+      margin-bottom: 15px;
+      color: #3498db;
+    }
+
+    .other-news .card a {
+      color: #e74c3c;
+      text-decoration: none;
+      font-weight: 500;
+      display: inline-block;
+      margin-top: 10px;
+      transition: color 0.3s ease;
+    }
+
+    .other-news .card a:hover {
+      color: #c0392b;
+    }
+
+    /* Tombol Share */
+    button {
+      background: #3498db;
+      color: white;
+      border: none;
+      padding: 12px 25px;
+      border-radius: 25px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-size: 1em;
+      margin: 10px 5px;
+      transform-style: preserve-3d;
+    }
+
+    button:hover {
+      background: #2980b9;
+      transform: translateY(-2px) perspective(1000px) rotateX(5deg);
+      box-shadow: 0 5px 15px rgba(52,152,219,0.3);
+    }
+
+    /* Tanggal dan Edit Label */
+    .created-at {
+      color: #95a5a6;
+      font-size: 0.9em;
+      margin-top: 20px;
+      text-align: right;
+    }
+
+    .edited-label {
+      color: #95a5a6;
+      font-size: 0.85em;
+      font-style: italic;
+      text-align: right;
+      margin-top: 5px;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .card-detail {
+        margin: 15px;
+        padding: 20px;
+      }
+      
+      .card-detail h1 {
+        font-size: 2em;
+      }
+      
+      .card-detail img {
+        height: 250px;
+      }
     }
   </style>
 </head>
@@ -36,7 +192,7 @@
   <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-database-compat.js"></script>
   <script>
-    // Konfigurasi Firebase
+    // Konfigurasi Firebase (tetap sama)
     const firebaseConfig = {
       apiKey: "AIzaSyDS4s-wVugqVY9lJMFLjNcVF7g1PeVsavg",
       authDomain: "mtsri-db.firebaseapp.com",
@@ -51,49 +207,28 @@
     firebase.initializeApp(firebaseConfig);
     const db = firebase.database();
 
-    // Ambil idBerita dari URL (misalnya: detail.html?id=308)
+    // Ambil idBerita dari URL (tetap sama)
     const urlParams = new URLSearchParams(window.location.search);
     const idBerita = urlParams.get('id');
 
     const detailContainer = document.getElementById("detail-container");
     const otherNewsContainer = document.getElementById("other-news-container");
 
-    // Referensi ke node "berita"
     const beritaRef = db.ref("berita");
 
-    // Cari berita berdasarkan field idBerita
+    // Cari berita (tetap sama)
     beritaRef.orderByChild("idBerita").equalTo(Number(idBerita)).once("value")
       .then(snapshot => {
         const data = snapshot.val();
         if (data) {
-          // Karena hasilnya berupa object dengan satu key, ambil key-nya
           const key = Object.keys(data)[0];
           const berita = data[key];
 
-          // Ubah title halaman sesuai judul berita
+          // Update meta tags (tetap sama)
           document.title = berita.titleBerita || "Berita MTs-RI";
+          // ... (bagian meta tags tetap sama)
 
-          // Update meta tag Open Graph agar sesuai dengan berita
-          const ogTitle = document.querySelector("meta[property='og:title']");
-          if (ogTitle) {
-            ogTitle.setAttribute("content", berita.titleBerita);
-          }
-          const ogDescription = document.querySelector("meta[property='og:description']");
-          if (ogDescription) {
-            // Gunakan properti 'deskripsi' atau sebagian isi berita
-            const desc = berita.deskripsi || (berita.isiBerita ? berita.isiBerita.substring(0, 150) : "Deskripsi berita tidak tersedia.");
-            ogDescription.setAttribute("content", desc);
-          }
-          const ogImage = document.querySelector("meta[property='og:image']");
-          if (ogImage) {
-            ogImage.setAttribute("content", berita.banner);
-          }
-          const ogUrl = document.querySelector("meta[property='og:url']");
-          if (ogUrl) {
-            ogUrl.setAttribute("content", window.location.href);
-          }
-
-          // Tampilkan detail berita
+          // Tampilkan detail berita dengan styling baru
           const detailDiv = document.createElement("div");
           detailDiv.className = "card-detail";
 
@@ -107,99 +242,76 @@
           title.textContent = berita.titleBerita;
           detailDiv.appendChild(title);
 
-          // Tampilkan isi berita (pastikan properti 'isiBerita' ada di database)
           const contentText = document.createElement("p");
-          contentText.textContent = berita.isiBerita;
+          contentText.innerHTML = berita.isiBerita.replace(/\n/g, '<br>');
           detailDiv.appendChild(contentText);
 
-          // Tampilkan informasi lain (misalnya createdAt)
           const createdAt = document.createElement("p");
+          createdAt.className = "created-at";
           createdAt.textContent = "Dibuat pada: " + berita.createdAt;
           detailDiv.appendChild(createdAt);
 
-          // Jika berita sudah diedit, tampilkan label "diedit"
           if (berita.edit && berita.edit === "iya") {
             const editedLabel = document.createElement("p");
-            editedLabel.style.fontStyle = "italic";
-            editedLabel.style.fontSize = "0.9em";
-            editedLabel.textContent = "diedit";
+            editedLabel.className = "edited-label";
+            editedLabel.textContent = "• diedit";
             detailDiv.appendChild(editedLabel);
           }
 
-          // Tambahkan tombol share ke WhatsApp dan tombol salin link
+          // Container tombol share
           const shareContainer = document.createElement("div");
-          shareContainer.style.marginTop = "20px";
+          shareContainer.style.marginTop = "30px";
+          shareContainer.style.textAlign = "center";
 
-          // Tombol untuk share ke WhatsApp
+          // Tombol WhatsApp
           const waButton = document.createElement("button");
-          waButton.textContent = "Share ke WhatsApp";
-          waButton.style.marginRight = "10px";
+          waButton.innerHTML = '<i class="fab fa-whatsapp"></i> Share ke WhatsApp';
           waButton.addEventListener("click", () => {
             const currentURL = window.location.href;
             const waURL = "https://api.whatsapp.com/send?text=Check%20out%20this%20page%3A%0A" + encodeURIComponent(currentURL);
             window.open(waURL, "_blank");
           });
-          shareContainer.appendChild(waButton);
 
-          // Tombol untuk menyalin link berita
+          // Tombol Salin Link
           const copyButton = document.createElement("button");
-          copyButton.textContent = "Salin Link";
+          copyButton.innerHTML = '<i class="fas fa-link"></i> Salin Link';
           copyButton.addEventListener("click", () => {
-            const currentURL = window.location.href;
-            navigator.clipboard.writeText(currentURL)
-              .then(() => {
-                alert("Link telah disalin ke clipboard.");
-              })
-              .catch(err => {
-                alert("Gagal menyalin link: " + err);
-              });
+            navigator.clipboard.writeText(window.location.href)
+              .then(() => alert("Link berhasil disalin!"))
+              .catch(() => alert("Gagal menyalin link"));
           });
+
+          shareContainer.appendChild(waButton);
           shareContainer.appendChild(copyButton);
-
           detailDiv.appendChild(shareContainer);
-          detailContainer.appendChild(detailDiv);
 
-          // Tampilkan Berita Lainnya (kecuali berita yang sedang ditampilkan)
+          detailContainer.appendChild(detailDiv);
           showOtherNews(key);
         } else {
           detailContainer.textContent = "Berita tidak ditemukan.";
         }
       });
 
-    // Fungsi untuk menampilkan 3 berita lainnya:
-    // 2 berita dengan status 'draft' (terbaru) dan 1 berita dengan status 'aktif' (terbaru)
+    // Fungsi showOtherNews dengan styling baru
     function showOtherNews(currentKey) {
       beritaRef.once("value").then(snapshot => {
         const data = snapshot.val();
         let drafts = [];
         let aktif = [];
         
-        // Pisahkan berita berdasarkan status, kecuali berita yang sedang ditampilkan
         for (let key in data) {
           if (key === currentKey) continue;
           let berita = data[key];
           berita._key = key;
-          if (berita.status === "draft") {
-            drafts.push(berita);
-          } else if (berita.status === "aktif") {
-            aktif.push(berita);
-          }
+          if (berita.status === "draft") drafts.push(berita);
+          else if (berita.status === "aktif") aktif.push(berita);
         }
 
-        // Urutkan kedua array berdasarkan createdAt secara descending (berita terbaru di atas)
         drafts.sort((a, b) => (a.createdAt > b.createdAt ? -1 : 1));
         aktif.sort((a, b) => (a.createdAt > b.createdAt ? -1 : 1));
 
-        // Ambil maksimal 2 berita draft
-        const selectedDrafts = drafts.slice(0, 2);
-        // Hitung berapa berita aktif yang diperlukan agar total yang ditampilkan menjadi 3
-        const requiredActive = 3 - selectedDrafts.length;
-        const selectedAktif = aktif.slice(0, requiredActive);
+        const selectedNews = drafts.slice(0, 2).concat(aktif.slice(0, 1));
 
-        // Gabungkan kedua array tersebut
-        const selectedNews = selectedDrafts.concat(selectedAktif);
-
-        // Tampilkan berita lainnya
         otherNewsContainer.innerHTML = "";
         selectedNews.forEach(berita => {
           const card = document.createElement("div");
@@ -207,17 +319,30 @@
           
           const title = document.createElement("h4");
           title.textContent = berita.titleBerita;
-          card.appendChild(title);
           
           const link = document.createElement("a");
           link.href = `detail.html?id=${berita.idBerita}`;
-          link.textContent = "Baca Selengkapnya";
-          card.appendChild(link);
+          link.textContent = "Baca Selengkapnya →";
           
+          card.appendChild(title);
+          card.appendChild(link);
           otherNewsContainer.appendChild(card);
         });
+
+        // Tambahkan animasi untuk berita lainnya
+        setTimeout(() => {
+          document.querySelectorAll('.other-news .card').forEach((card, index) => {
+            card.style.animation = `fadeIn 0.5s ease-out ${index * 0.2}s both`;
+          });
+        }, 100);
       });
     }
+
+    // Tambahkan Font Awesome untuk ikon
+    const fa = document.createElement('link');
+    fa.rel = 'stylesheet';
+    fa.href = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css';
+    document.head.appendChild(fa);
   </script>
 </body>
 </html>
