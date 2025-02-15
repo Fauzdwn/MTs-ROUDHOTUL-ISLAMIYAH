@@ -1,30 +1,87 @@
 <!DOCTYPE html>
-<html>
+<html lang="id">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Semua Berita</title>
   <style>
-    .card {
-      border: 1px solid #ddd;
-      padding: 15px;
-      margin: 10px;
-      border-radius: 5px;
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f9f9f9;
+      color: #333;
+      margin: 0;
+      padding: 20px;
+      text-align: center;
     }
+    
+    h1 {
+      margin-bottom: 20px;
+    }
+
+    #all-news-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+      padding: 20px;
+    }
+    
+    .card {
+      background: #ffffff;
+      border-radius: 10px;
+      padding: 15px;
+      transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .card:hover {
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    }
+
     .card img {
       max-width: 100%;
+      border-radius: 8px;
+      transition: transform 0.3s ease-in-out;
+    }
+
+    .card:hover img {
+      transform: scale(1.05);
+    }
+    
+    .card h2 {
+      font-size: 1.5em;
+      margin: 10px 0;
+    }
+    
+    .card p {
+      font-size: 0.9em;
+      opacity: 0.8;
+    }
+    
+    .card a {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 8px 12px;
+      background: #007bff;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      transition: background 0.3s;
+    }
+    
+    .card a:hover {
+      background: #0056b3;
     }
   </style>
 </head>
 <body>
   <h1>Semua Berita</h1>
   <div id="all-news-container"></div>
-
-  <!-- Sertakan Firebase SDK -->
+  
   <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-database-compat.js"></script>
   
   <script>
-    // Konfigurasi Firebase (sesuaikan dengan project Anda)
     const firebaseConfig = {
       apiKey: "AIzaSyDS4s-wVugqVY9lJMFLjNcVF7g1PeVsavg",
       authDomain: "mtsri-db.firebaseapp.com",
@@ -43,57 +100,44 @@
     db.ref("berita").once("value").then(snapshot => {
       const data = snapshot.val();
       let allNews = [];
-
-      // Konversi data ke dalam array
       for (let key in data) {
         let berita = data[key];
-        berita._key = key;  // Simpan key jika diperlukan
+        berita._key = key;
         allNews.push(berita);
       }
 
-      // Sorting berita:
-      // 1. Berita dengan status "draft" ditempatkan di atas.
-      // 2. Jika kedua berita memiliki status yang sama, urutkan berdasarkan createdAt secara descending (berita terbaru di atas).
       allNews.sort((a, b) => {
         if (a.status === "draft" && b.status !== "draft") return -1;
         if (a.status !== "draft" && b.status === "draft") return 1;
-        if (a.createdAt > b.createdAt) return -1;
-        if (a.createdAt < b.createdAt) return 1;
-        return 0;
+        return b.createdAt - a.createdAt;
       });
 
-      // Tampilkan seluruh berita
       allNews.forEach(berita => {
         const card = document.createElement("div");
         card.className = "card";
 
-        // Tampilkan banner jika ada
         if (berita.banner) {
           const img = document.createElement("img");
           img.src = berita.banner;
           card.appendChild(img);
         }
 
-        // Tampilkan judul berita
         const title = document.createElement("h2");
         title.textContent = berita.titleBerita;
         card.appendChild(title);
 
-        // Tampilkan informasi status, pembuat, dan waktu pembuatan
         const info = document.createElement("p");
-info.textContent = `Dibuat oleh ${berita.createdBy} pada ${berita.createdAt}`;
-card.appendChild(info);
+        info.textContent = `Dibuat oleh ${berita.createdBy} pada ${new Date(berita.createdAt).toLocaleString()}`;
+        card.appendChild(info);
 
-// Jika berita sudah di-edit, tampilkan tulisan "diedit" di bawahnya:
-if (berita.edit && berita.edit === "iya") {
-  const editedLabel = document.createElement("p");
-  editedLabel.style.fontStyle = "italic";
-  editedLabel.style.fontSize = "0.9em";
-  editedLabel.textContent = "diedit";
-  card.appendChild(editedLabel);
-}
+        if (berita.edit && berita.edit === "iya") {
+          const editedLabel = document.createElement("p");
+          editedLabel.style.fontStyle = "italic";
+          editedLabel.style.fontSize = "0.9em";
+          editedLabel.textContent = "diedit";
+          card.appendChild(editedLabel);
+        }
 
-        // Buat link menuju halaman detail berita
         const link = document.createElement("a");
         link.href = `detail.html?id=${berita.idBerita}`;
         link.textContent = "Baca Selengkapnya";
